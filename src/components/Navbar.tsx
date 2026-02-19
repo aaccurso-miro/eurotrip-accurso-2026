@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { NAV_ITEMS } from "@/lib/constants";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -26,6 +28,16 @@ export default function Navbar() {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }, 100);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/logout', { method: 'POST' });
+      router.push('/login');
+      router.refresh();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
 
   return (
@@ -66,6 +78,18 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
+            <button
+              onClick={handleLogout}
+              className={`ml-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                scrolled
+                  ? "text-gray-700 hover:text-red-600 hover:bg-red-50"
+                  : "text-white/90 hover:text-white hover:bg-white/10"
+              }`}
+              title="Cerrar sesión"
+            >
+              <LogOut size={16} />
+              <span>Salir</span>
+            </button>
           </div>
 
           {/* Mobile toggle */}
@@ -100,6 +124,13 @@ export default function Navbar() {
                   {item.label}
                 </a>
               ))}
+              <button
+                onClick={handleLogout}
+                className="w-full text-left px-3 py-2 rounded-lg text-gray-700 hover:text-red-600 hover:bg-red-50 text-sm font-medium flex items-center gap-2"
+              >
+                <LogOut size={16} />
+                <span>Salir</span>
+              </button>
             </div>
           </motion.div>
         )}
