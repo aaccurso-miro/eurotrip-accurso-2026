@@ -31,10 +31,10 @@ function ActivitySummary({
     <div className="flex items-start gap-2">
       <span className="text-[#d4a843] shrink-0 mt-0.5">{icon}</span>
       <div>
-        <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+        <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
           {label}
         </span>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-gray-700 dark:text-gray-200">
           {activities.map((a) => a.title).join(" · ")}
         </p>
       </div>
@@ -52,20 +52,20 @@ function TodayCard({ day }: { day: DayData }) {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="py-12 bg-gradient-to-b from-white to-[#faf5eb]"
+      className="py-12 bg-gradient-to-b from-white to-[#faf5eb] dark:from-[#1e293b] dark:to-[#0f172a]"
     >
       <div className="max-w-3xl mx-auto px-4">
         {/* Section label */}
         <div className="flex items-center justify-center gap-2 mb-6">
           <MapPin className="text-[#d4a843]" size={22} />
-          <span className="text-sm font-semibold text-[#1e3a5f] uppercase tracking-widest">
+          <span className="text-sm font-semibold text-[#1e3a5f] dark:text-[#93c5fd] uppercase tracking-widest">
             Hoy en ruta
           </span>
         </div>
 
         {/* Main card */}
         <div
-          className="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#e8c96a] ring-2 ring-[#e8c96a]/20 border-l-4"
+          className="bg-white dark:bg-[#1e293b] rounded-2xl shadow-xl overflow-hidden border-2 border-[#e8c96a] ring-2 ring-[#e8c96a]/20 border-l-4"
           style={{ borderLeftColor: color }}
         >
           {/* Header */}
@@ -82,13 +82,13 @@ function TodayCard({ day }: { day: DayData }) {
               >
                 HOY
               </motion.span>
-              <h2 className="text-xl sm:text-2xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+              <h2 className="text-xl sm:text-2xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
                 Día {day.dayNumber} — {day.weekday} {day.date}
               </h2>
             </div>
 
             {/* Route */}
-            <div className="flex items-center gap-2 text-sm text-gray-600 mb-1">
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 mb-1">
               <MapPin size={14} className="text-[#d4a843] shrink-0" />
               {hasDriving ? (
                 <>
@@ -103,7 +103,7 @@ function TodayCard({ day }: { day: DayData }) {
 
             {/* Overnight */}
             {day.overnightCity && (
-              <div className="flex items-center gap-2 text-sm text-gray-500">
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                 <Bed size={14} className="text-gray-400 shrink-0" />
                 <span>Noche en {day.overnightCity}</span>
               </div>
@@ -139,30 +139,30 @@ function TodayCard({ day }: { day: DayData }) {
               <div className="p-5 sm:p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Coffee size={16} className="text-[#d4a843]" />
-                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                     Dónde comer
                   </span>
                 </div>
                 <div className="space-y-2">
                   {day.meals.lunch && (
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium text-[#1e3a5f]">
+                    <p className="text-sm text-gray-700 dark:text-gray-200">
+                      <span className="font-medium text-[#1e3a5f] dark:text-[#93c5fd]">
                         Almuerzo:
                       </span>{" "}
                       {day.meals.lunch.name}
                     </p>
                   )}
                   {day.meals.merienda && (
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium text-[#1e3a5f]">
+                    <p className="text-sm text-gray-700 dark:text-gray-200">
+                      <span className="font-medium text-[#1e3a5f] dark:text-[#93c5fd]">
                         Merienda:
                       </span>{" "}
                       {day.meals.merienda.name}
                     </p>
                   )}
                   {day.meals.dinner && (
-                    <p className="text-sm text-gray-700">
-                      <span className="font-medium text-[#1e3a5f]">
+                    <p className="text-sm text-gray-700 dark:text-gray-200">
+                      <span className="font-medium text-[#1e3a5f] dark:text-[#93c5fd]">
                         Cena:
                       </span>{" "}
                       {day.meals.dinner.name}
@@ -183,7 +183,7 @@ function TodayCard({ day }: { day: DayData }) {
                 .getElementById("itinerario")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="flex items-center justify-center gap-2 p-4 text-sm font-medium text-[#1e3a5f] hover:bg-[#faf5eb] transition-colors cursor-pointer"
+            className="flex items-center justify-center gap-2 p-4 text-sm font-medium text-[#1e3a5f] dark:text-[#93c5fd] hover:bg-[#faf5eb] dark:hover:bg-gray-800 transition-colors cursor-pointer"
           >
             <ChevronDown size={14} />
             Ver detalles completos en el itinerario
@@ -201,7 +201,7 @@ function ViajeCompletado() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="py-12 bg-gradient-to-b from-white to-[#faf5eb]"
+      className="py-12 bg-gradient-to-b from-white to-[#faf5eb] dark:from-[#1e293b] dark:to-[#0f172a]"
     >
       <div className="max-w-3xl mx-auto px-4 text-center">
         <motion.div
@@ -210,10 +210,10 @@ function ViajeCompletado() {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <Trophy className="text-[#e8c96a] mx-auto mb-4" size={48} />
-          <h2 className="text-3xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] mb-2">
+          <h2 className="text-3xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd] mb-2">
             ¡Viaje completado!
           </h2>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-400">
             {TOTAL_DAYS} días · 7 ciudades · ~{TOTAL_DISTANCE_KM} km ·
             ¡Familia Accurso lo logró!
           </p>

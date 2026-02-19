@@ -27,6 +27,7 @@ export const CITY_COLORS: Record<string, string> = {
 export const NAV_ITEMS = [
   { label: "Inicio", href: "#hero" },
   { label: "Mapa", href: "#mapa" },
+  { label: "Ruta", href: "#resumen" },
   { label: "Itinerario", href: "#itinerario" },
   { label: "Ciudades", href: "#ciudades" },
   { label: "Manejo", href: "#manejo" },

@@ -12,7 +12,7 @@ export default function WeatherInfo() {
   );
 
   return (
-    <section id="clima" className="py-20 bg-[#faf5eb]">
+    <section id="clima" className="py-20 bg-[#faf5eb] dark:bg-[#0f172a]">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,11 +22,11 @@ export default function WeatherInfo() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <CloudSun className="text-[#d4a843]" size={28} />
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
               Clima en Mayo/Junio
             </h2>
           </div>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             Temperaturas promedio para fin de mayo. Llevar capas y una campera
             liviana impermeable por las dudas.
           </p>
@@ -42,11 +42,11 @@ export default function WeatherInfo() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow"
+                className="bg-white dark:bg-[#1e293b] rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-lg shrink-0">{city.flag}</span>
-                  <h3 className="font-bold text-gray-800 truncate" title={city.name}>{city.name}</h3>
+                  <h3 className="font-bold text-gray-800 dark:text-gray-100 truncate" title={city.name}>{city.name}</h3>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
@@ -59,7 +59,7 @@ export default function WeatherInfo() {
                     />
                     <div>
                       <p className="text-xs text-gray-400">Máxima</p>
-                      <p className="text-lg font-bold text-gray-800">
+                      <p className="text-lg font-bold text-gray-800 dark:text-gray-100">
                         {city.weather.avgHighC}°C
                       </p>
                     </div>
@@ -73,7 +73,7 @@ export default function WeatherInfo() {
                     />
                     <div>
                       <p className="text-xs text-gray-400">Mínima</p>
-                      <p className="text-lg font-bold text-gray-800">
+                      <p className="text-lg font-bold text-gray-800 dark:text-gray-100">
                         {city.weather.avgLowC}°C
                       </p>
                     </div>
@@ -84,7 +84,7 @@ export default function WeatherInfo() {
                     <Droplets size={18} className="text-blue-300 shrink-0" />
                     <div>
                       <p className="text-xs text-gray-400">Lluvia</p>
-                      <p className="text-sm font-medium text-gray-700">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
                         {city.weather.rainProbability}%
                       </p>
                     </div>
@@ -95,7 +95,7 @@ export default function WeatherInfo() {
                     <Sunrise size={18} className="text-[#d4a843] shrink-0" />
                     <div>
                       <p className="text-xs text-gray-400">Sol</p>
-                      <p className="text-sm font-medium text-gray-700">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
                         {city.weather.sunriseTime} – {city.weather.sunsetTime}
                       </p>
                     </div>
@@ -103,8 +103,8 @@ export default function WeatherInfo() {
                 </div>
 
                 {/* Advice */}
-                <div className="mt-4 pt-3 border-t border-gray-50">
-                  <p className="text-xs text-gray-400">
+                <div className="mt-4 pt-3 border-t border-gray-50 dark:border-gray-700">
+                  <p className="text-xs text-gray-400 dark:text-gray-500">
                     {city.weather.avgHighC >= 20
                       ? "☀️ Agradable, pero llevar protector solar"
                       : city.weather.rainProbability >= 40

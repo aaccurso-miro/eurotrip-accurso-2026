@@ -36,7 +36,7 @@ const wikiLinks: Record<string, string> = {
 
 export default function CityIntro() {
   return (
-    <section id="ciudades" className="py-20 bg-white">
+    <section id="ciudades" className="py-20 bg-white dark:bg-[#1e293b]">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,11 +46,11 @@ export default function CityIntro() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <MapPin className="text-[#d4a843]" size={28} />
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
               Nuestras Ciudades
             </h2>
           </div>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             De canales holandeses a torres checas, pasando por palacios imperiales
             y pueblos medievales. Cada parada tiene su magia.
           </p>
@@ -69,7 +69,7 @@ export default function CityIntro() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer block"
+                className="group bg-white dark:bg-[#0f172a] rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer block"
               >
                 {/* City image */}
                 <div className="relative h-48 overflow-hidden">
@@ -112,7 +112,7 @@ export default function CityIntro() {
 
                 {/* Content */}
                 <div className="p-5">
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                     {city.intro}
                   </p>
 
@@ -121,7 +121,7 @@ export default function CityIntro() {
                     {city.highlights.map((h, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-[#faf5eb] text-[#1e3a5f]"
+                        className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-[#faf5eb] dark:bg-gray-800 text-[#1e3a5f] dark:text-[#93c5fd]"
                       >
                         <Star size={10} className="text-[#d4a843]" />
                         {h}
@@ -130,7 +130,7 @@ export default function CityIntro() {
                   </div>
 
                   {/* Wikipedia link hint */}
-                  <div className="mt-3 pt-3 border-t border-gray-50 flex items-center gap-1.5 text-xs text-gray-400 group-hover:text-[#d4a843] transition-colors">
+                  <div className="mt-3 pt-3 border-t border-gray-50 dark:border-gray-700 flex items-center gap-1.5 text-xs text-gray-400 group-hover:text-[#d4a843] transition-colors">
                     <ExternalLink size={12} />
                     <span>Más info en Wikipedia</span>
                   </div>

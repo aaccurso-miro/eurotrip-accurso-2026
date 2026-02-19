@@ -31,13 +31,13 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="bg-white rounded-xl shadow-lg w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
+        className="bg-white dark:bg-[#1e293b] rounded-xl shadow-lg w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center"
       >
-        <span className="text-3xl sm:text-4xl font-bold text-[#1e3a5f]">
+        <span className="text-3xl sm:text-4xl font-bold text-[#1e3a5f] dark:text-[#93c5fd]">
           {String(value).padStart(2, "0")}
         </span>
       </motion.div>
-      <span className="mt-2 text-sm text-gray-500 font-medium">{label}</span>
+      <span className="mt-2 text-sm text-gray-500 dark:text-gray-400 font-medium">{label}</span>
     </div>
   );
 }
@@ -61,7 +61,7 @@ export default function Countdown() {
 
   if (!mounted) {
     return (
-      <section id="countdown" className="py-16 bg-gradient-to-b from-[#faf5eb] to-white">
+      <section id="countdown" className="py-16 bg-gradient-to-b from-[#faf5eb] to-white dark:from-[#0f172a] dark:to-[#0f172a]">
         <div className="max-w-4xl mx-auto text-center px-4">
           <div className="h-32" />
         </div>
@@ -72,7 +72,7 @@ export default function Countdown() {
   return (
     <section
       id="countdown"
-      className="py-16 bg-gradient-to-b from-[#faf5eb] to-white"
+      className="py-16 bg-gradient-to-b from-[#faf5eb] to-white dark:from-[#0f172a] dark:to-[#0f172a]"
     >
       <div className="max-w-4xl mx-auto text-center px-4">
         {timeLeft ? (
@@ -84,7 +84,7 @@ export default function Countdown() {
               className="flex items-center justify-center gap-2 mb-8"
             >
               <Clock className="text-[#d4a843]" size={24} />
-              <h2 className="text-2xl sm:text-3xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+              <h2 className="text-2xl sm:text-3xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
                 Faltan...
               </h2>
             </motion.div>
@@ -106,7 +106,7 @@ export default function Countdown() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="mt-8 text-gray-500 text-lg"
+              className="mt-8 text-gray-500 dark:text-gray-400 text-lg"
             >
               para arrancar el viaje 🇦🇷 ✈️ 🇳🇱 🚗 🇪🇺
             </motion.p>
@@ -118,10 +118,10 @@ export default function Countdown() {
             className="py-8"
           >
             <span className="text-5xl mb-4 block">🚗💨</span>
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] mb-2">
+            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd] mb-2">
               ¡Buen viaje, familia!
             </h2>
-            <p className="text-xl text-gray-500">
+            <p className="text-xl text-gray-500 dark:text-gray-400">
               El viaje ya comenzó
             </p>
           </motion.div>

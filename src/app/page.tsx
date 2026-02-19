@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
 import VistaHoy from "@/components/VistaHoy";
 import MapSection from "@/components/MapSection";
+import TripTimeline from "@/components/TripTimeline";
 import Itinerary from "@/components/Itinerary";
 import CityIntro from "@/components/CityIntro";
 import DrivingInfo from "@/components/DrivingInfo";
@@ -20,6 +21,7 @@ export default function Home() {
         <Countdown />
         <VistaHoy />
         <MapSection />
+        <TripTimeline />
         <Itinerary />
         <CityIntro />
         <DrivingInfo />

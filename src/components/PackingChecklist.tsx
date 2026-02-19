@@ -74,7 +74,7 @@ export default function PackingChecklist() {
 
   if (!mounted) {
     return (
-      <section id="equipaje" className="py-20 bg-[#faf5eb]">
+      <section id="equipaje" className="py-20 bg-[#faf5eb] dark:bg-[#0f172a]">
         <div className="max-w-3xl mx-auto px-4">
           <div className="h-64" />
         </div>
@@ -83,7 +83,7 @@ export default function PackingChecklist() {
   }
 
   return (
-    <section id="equipaje" className="py-20 bg-[#faf5eb]">
+    <section id="equipaje" className="py-20 bg-[#faf5eb] dark:bg-[#0f172a]">
       <div className="max-w-3xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,11 +93,11 @@ export default function PackingChecklist() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <Luggage className="text-[#d4a843]" size={28} />
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
               Checklist de Equipaje
             </h2>
           </div>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             Lista interactiva que se guarda automáticamente. Marcá lo que ya
             tengan preparado.
           </p>
@@ -111,12 +111,12 @@ export default function PackingChecklist() {
           className="mb-8"
         >
           <div className="flex items-center justify-between text-sm mb-2">
-            <span className="text-gray-600 font-medium">
+            <span className="text-gray-600 dark:text-gray-300 font-medium">
               {checkedCount} de {totalItems} items
             </span>
-            <span className="text-[#1e3a5f] font-bold">{progress}%</span>
+            <span className="text-[#1e3a5f] dark:text-[#93c5fd] font-bold">{progress}%</span>
           </div>
-          <div className="h-3 bg-white rounded-full overflow-hidden shadow-inner">
+          <div className="h-3 bg-white dark:bg-gray-800 rounded-full overflow-hidden shadow-inner">
             <motion.div
               className="h-full rounded-full"
               style={{
@@ -134,7 +134,7 @@ export default function PackingChecklist() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-green-600 text-sm text-center mt-2 font-medium"
+              className="text-green-600 dark:text-green-400 text-sm text-center mt-2 font-medium"
             >
               ✅ ¡Todo listo para el viaje!
             </motion.p>
@@ -163,7 +163,7 @@ export default function PackingChecklist() {
         >
           <button
             onClick={reset}
-            className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-red-400 transition-colors px-4 py-2 rounded-lg hover:bg-white"
+            className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-red-400 transition-colors px-4 py-2 rounded-lg hover:bg-white dark:hover:bg-gray-800"
           >
             <RotateCcw size={14} />
             Resetear checklist
@@ -195,20 +195,20 @@ function CategoryBlock({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: catIndex * 0.08 }}
-      className="bg-white rounded-xl shadow-sm overflow-hidden"
+      className="bg-white dark:bg-[#1e293b] rounded-xl shadow-sm overflow-hidden"
     >
-      <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-b border-gray-100">
+      <div className="flex items-center justify-between px-5 py-3 bg-gray-50 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
         <div className="flex items-center gap-2">
           <span className="text-[#d4a843]">
             {categoryIcons[category.icon] || <FileText size={18} />}
           </span>
-          <h3 className="font-medium text-gray-800 text-sm">{category.name}</h3>
+          <h3 className="font-medium text-gray-800 dark:text-gray-100 text-sm">{category.name}</h3>
         </div>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-gray-400 dark:text-gray-500">
           {checkedInCat}/{category.items.length}
         </span>
       </div>
-      <div className="divide-y divide-gray-50">
+      <div className="divide-y divide-gray-50 dark:divide-gray-700">
         {category.items.map((item, itemIndex) => {
           const key = `${catIndex}-${itemIndex}`;
           const isChecked = !!checked[key];
@@ -216,7 +216,7 @@ function CategoryBlock({
             <button
               key={key}
               onClick={() => onToggle(key)}
-              className="w-full flex items-center gap-3 px-5 py-3 text-sm hover:bg-[#faf5eb]/50 transition-colors text-left cursor-pointer"
+              className="w-full flex items-center gap-3 px-5 py-3 text-sm hover:bg-[#faf5eb]/50 dark:hover:bg-gray-700/50 transition-colors text-left cursor-pointer"
             >
               {isChecked ? (
                 <CheckSquare
@@ -224,13 +224,13 @@ function CategoryBlock({
                   className="text-green-500 shrink-0"
                 />
               ) : (
-                <Square size={18} className="text-gray-300 shrink-0" />
+                <Square size={18} className="text-gray-300 dark:text-gray-600 shrink-0" />
               )}
               <span
                 className={
                   isChecked
                     ? "text-gray-400 line-through"
-                    : "text-gray-700"
+                    : "text-gray-700 dark:text-gray-200"
                 }
               >
                 {item}

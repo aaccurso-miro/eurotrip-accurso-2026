@@ -24,7 +24,7 @@ export default function DrivingInfo() {
   const totalKm = drivingLegs.reduce((sum, leg) => sum + leg.distanceKm, 0);
 
   return (
-    <section id="manejo" className="py-20 bg-white">
+    <section id="manejo" className="py-20 bg-white dark:bg-[#1e293b]">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,13 +34,13 @@ export default function DrivingInfo() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <Car className="text-[#d4a843]" size={28} />
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
               Info de Manejo
             </h2>
           </div>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             Distancias, tiempos estimados y peajes entre cada tramo.
-            Total del viaje: <strong className="text-[#1e3a5f]">~{totalKm} km</strong>.
+            Total del viaje: <strong className="text-[#1e3a5f] dark:text-[#93c5fd]">~{totalKm} km</strong>.
           </p>
         </motion.div>
 
@@ -69,35 +69,37 @@ export default function DrivingInfo() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
                 className={`grid grid-cols-12 gap-3 px-4 py-4 text-sm items-center ${
-                  index % 2 === 0 ? "bg-white" : "bg-[#faf5eb]/50"
+                  index % 2 === 0
+                    ? "bg-white dark:bg-[#1e293b]"
+                    : "bg-[#faf5eb]/50 dark:bg-gray-800/30"
                 } ${
                   index === drivingLegs.length - 1
                     ? "rounded-b-xl"
-                    : "border-b border-gray-100"
+                    : "border-b border-gray-100 dark:border-gray-700"
                 }`}
               >
                 <div className="col-span-4 flex items-center gap-2">
                   <Route size={14} className="text-[#d4a843] shrink-0" />
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-gray-800 dark:text-gray-100">
                     {leg.from} → {leg.to}
                   </span>
                 </div>
-                <div className="col-span-2 text-center font-medium text-[#1e3a5f]">
+                <div className="col-span-2 text-center font-medium text-[#1e3a5f] dark:text-[#93c5fd]">
                   {leg.distanceKm} km
                 </div>
-                <div className="col-span-2 text-center text-gray-600">
+                <div className="col-span-2 text-center text-gray-600 dark:text-gray-300">
                   {leg.estimatedHours}
                 </div>
-                <div className="col-span-4 text-gray-500 text-xs">
+                <div className="col-span-4 text-gray-500 dark:text-gray-400 text-xs">
                   {leg.tollInfo}
                 </div>
               </motion.div>
             ))}
 
             {/* Total row */}
-            <div className="grid grid-cols-12 gap-3 px-4 py-3 bg-[#1e3a5f]/5 rounded-b-xl text-sm font-bold border-t-2 border-[#1e3a5f]">
-              <div className="col-span-4 text-[#1e3a5f]">TOTAL</div>
-              <div className="col-span-2 text-center text-[#1e3a5f]">
+            <div className="grid grid-cols-12 gap-3 px-4 py-3 bg-[#1e3a5f]/5 dark:bg-[#1e3a5f]/20 rounded-b-xl text-sm font-bold border-t-2 border-[#1e3a5f]">
+              <div className="col-span-4 text-[#1e3a5f] dark:text-[#93c5fd]">TOTAL</div>
+              <div className="col-span-2 text-center text-[#1e3a5f] dark:text-[#93c5fd]">
                 ~{totalKm} km
               </div>
               <div className="col-span-6"></div>
@@ -111,7 +113,7 @@ export default function DrivingInfo() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] mb-6 text-center">
+          <h3 className="text-xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd] mb-6 text-center">
             Consejos para la ruta
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -122,17 +124,17 @@ export default function DrivingInfo() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="bg-[#faf5eb] rounded-xl p-4 border border-[#d4a843]/20"
+                className="bg-[#faf5eb] dark:bg-gray-800 rounded-xl p-4 border border-[#d4a843]/20 dark:border-[#d4a843]/30"
               >
                 <div className="flex items-start gap-3">
                   <span className="text-[#d4a843] mt-0.5 shrink-0">
                     {tipIcons[tip.icon] || <Car size={20} />}
                   </span>
                   <div>
-                    <h4 className="font-medium text-gray-800 text-sm mb-1">
+                    <h4 className="font-medium text-gray-800 dark:text-gray-100 text-sm mb-1">
                       {tip.title}
                     </h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
                       {tip.description}
                     </p>
                   </div>

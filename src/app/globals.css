@@ -7,7 +7,10 @@
   --color-amber-light: #e8c96a;
   --color-warm-gray: #6b7280;
   --color-soft-white: #fefdfb;
+  --color-body-text: #1f2937;
 }
+
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --color-cream: var(--color-cream);
@@ -26,7 +29,7 @@ html {
 
 body {
   background: var(--color-cream);
-  color: #1f2937;
+  color: var(--color-body-text);
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
@@ -58,4 +61,16 @@ h1, h2, h3, h4, h5, h6 {
 /* Section spacing */
 section {
   scroll-margin-top: 80px;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] {
+  --color-cream: #0f172a;
+  --color-soft-white: #0f172a;
+  --color-body-text: #f1f5f9;
+  --color-deep-blue: #93c5fd;
+  --color-warm-gray: #94a3b8;
+}
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #1e293b;
 }

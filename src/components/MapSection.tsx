@@ -7,15 +7,15 @@ import { Map as MapIcon } from "lucide-react";
 const MapLeaflet = dynamic(() => import("./MapLeaflet"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[500px] bg-gray-100 rounded-2xl animate-pulse flex items-center justify-center">
-      <span className="text-gray-400">Cargando mapa...</span>
+    <div className="w-full h-[500px] bg-gray-100 dark:bg-gray-800 rounded-2xl animate-pulse flex items-center justify-center">
+      <span className="text-gray-400 dark:text-gray-500">Cargando mapa...</span>
     </div>
   ),
 });
 
 export default function MapSection() {
   return (
-    <section id="mapa" className="py-20 bg-white">
+    <section id="mapa" className="py-20 bg-white dark:bg-[#1e293b]">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,11 +25,11 @@ export default function MapSection() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <MapIcon className="text-[#d4a843]" size={28} />
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
               Nuestra Ruta
             </h2>
           </div>
-          <p className="text-gray-500 max-w-2xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
             7 ciudades, 4 países, ~2540 km de recorrido por el corazón de Europa.
             Tocá cada marcador para ver los detalles.
           </p>
@@ -40,7 +40,7 @@ export default function MapSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="rounded-2xl overflow-hidden shadow-xl border border-gray-100"
+          className="rounded-2xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-700"
           style={{ height: "500px" }}
         >
           <MapLeaflet />
@@ -52,7 +52,7 @@ export default function MapSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-gray-500"
+          className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-gray-500 dark:text-gray-400"
         >
           <span>🇳🇱 Países Bajos</span>
           <span>•</span>

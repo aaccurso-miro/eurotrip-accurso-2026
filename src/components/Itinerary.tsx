@@ -17,7 +17,7 @@ export default function Itinerary() {
     }
   }, []);
   return (
-    <section id="itinerario" className="py-20 bg-[#faf5eb]">
+    <section id="itinerario" className="py-20 bg-[#faf5eb] dark:bg-[#0f172a]">
       <div className="max-w-3xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,11 +27,11 @@ export default function Itinerary() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <CalendarDays className="text-[#d4a843]" size={28} />
-            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f]">
+            <h2 className="text-3xl sm:text-4xl font-[family-name:var(--font-playfair)] text-[#1e3a5f] dark:text-[#93c5fd]">
               Día por Día
             </h2>
           </div>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             11 días de travesía, ritmo relajado: una actividad principal por
             la mañana, algo liviano a la tarde, y buena cena. Tocá cada día para
             ver los detalles.

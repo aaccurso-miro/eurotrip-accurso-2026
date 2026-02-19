@@ -74,7 +74,7 @@ export default function DayCard({
       className="relative"
     >
       <div
-        className={`bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 ${
+        className={`bg-white dark:bg-[#1e293b] rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 ${
           isToday ? "ring-2 ring-[#e8c96a]/50 ring-offset-1" : ""
         }`}
         style={{ borderLeftColor: color }}
@@ -108,10 +108,10 @@ export default function DayCard({
                   </motion.span>
                 )}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-800">
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">
                     Día {day.dayNumber} — {day.weekday} {day.date}
                   </h3>
-                  <div className="flex items-center gap-2 text-sm text-gray-500 mt-0.5 flex-wrap">
+                  <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-0.5 flex-wrap">
                     {hasDriving ? (
                       <>
                         <span className="truncate max-w-[100px] sm:max-w-none" title={day.from}>{day.from}</span>
@@ -123,7 +123,7 @@ export default function DayCard({
                     )}
                     {day.overnightCity && (
                       <>
-                        <span className="text-gray-300">|</span>
+                        <span className="text-gray-300 dark:text-gray-600">|</span>
                         <Bed size={14} className="text-gray-400 shrink-0" />
                         <span className="text-gray-400 truncate max-w-[100px] sm:max-w-none" title={day.overnightCity}>
                           {day.overnightCity}
@@ -143,7 +143,7 @@ export default function DayCard({
                 ].map((act, i) => (
                   <span
                     key={i}
-                    className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-gray-50 text-gray-600 border border-gray-100"
+                    className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-100 dark:border-gray-600"
                   >
                     {typeIcons[act.type]}
                     {typeLabels[act.type]}
@@ -172,7 +172,7 @@ export default function DayCard({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="px-5 sm:px-6 pb-6 border-t border-gray-50">
+              <div className="px-5 sm:px-6 pb-6 border-t border-gray-50 dark:border-gray-700">
                 {/* Activities by time of day */}
                 <div className="mt-4 space-y-5">
                   {day.activities.morning && day.activities.morning.length > 0 && (
@@ -203,8 +203,8 @@ export default function DayCard({
 
                 {/* Meals */}
                 {(day.meals.lunch || day.meals.merienda || day.meals.dinner) && (
-                  <div className="mt-5 pt-4 border-t border-gray-50">
-                    <h4 className="text-sm font-semibold text-gray-700 flex items-center gap-2 mb-3">
+                  <div className="mt-5 pt-4 border-t border-gray-50 dark:border-gray-700">
+                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2 mb-3">
                       <Coffee size={16} className="text-[#d4a843]" />
                       Dónde comer
                     </h4>
@@ -224,8 +224,8 @@ export default function DayCard({
 
                 {/* Tips */}
                 {day.tips.length > 0 && (
-                  <div className="mt-5 pt-4 border-t border-gray-50">
-                    <h4 className="text-sm font-semibold text-gray-700 flex items-center gap-2 mb-3">
+                  <div className="mt-5 pt-4 border-t border-gray-50 dark:border-gray-700">
+                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2 mb-3">
                       <Lightbulb size={16} className="text-[#d4a843]" />
                       Tips del día
                     </h4>
@@ -233,7 +233,7 @@ export default function DayCard({
                       {day.tips.map((tip, i) => (
                         <li
                           key={i}
-                          className="text-sm text-gray-500 flex items-start gap-2"
+                          className="text-sm text-gray-500 dark:text-gray-400 flex items-start gap-2"
                         >
                           <span className="text-[#d4a843] shrink-0 mt-0.5">
                             •
@@ -266,7 +266,7 @@ function TimeBlock({
 }) {
   return (
     <div>
-      <h4 className="text-sm font-semibold text-gray-600 flex items-center gap-2 mb-2">
+      <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2 mb-2">
         <span style={{ color }}>{icon}</span>
         {label}
       </h4>
@@ -277,7 +277,7 @@ function TimeBlock({
               {typeIcons[act.type]}
             </span>
             <div>
-              <p className="text-sm font-medium text-gray-700">
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
                 {act.title}
                 {act.optional && (
                   <span className="ml-2 text-xs text-[#d4a843] bg-[#d4a843]/10 px-2 py-0.5 rounded-full">
@@ -285,7 +285,7 @@ function TimeBlock({
                   </span>
                 )}
               </p>
-              <p className="text-sm text-gray-500 mt-0.5">{act.description}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{act.description}</p>
             </div>
           </div>
         ))}
@@ -302,12 +302,12 @@ function MealItem({
   meal: { name: string; description: string };
 }) {
   return (
-    <div className="bg-[#faf5eb]/50 rounded-lg p-3">
+    <div className="bg-[#faf5eb]/50 dark:bg-gray-800/50 rounded-lg p-3">
       <p className="text-sm">
-        <span className="font-medium text-gray-700">{label}:</span>{" "}
-        <span className="text-[#1e3a5f] font-medium">{meal.name}</span>
+        <span className="font-medium text-gray-700 dark:text-gray-200">{label}:</span>{" "}
+        <span className="text-[#1e3a5f] dark:text-[#93c5fd] font-medium">{meal.name}</span>
       </p>
-      <p className="text-xs text-gray-500 mt-1">{meal.description}</p>
+      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{meal.description}</p>
     </div>
   );
 }
