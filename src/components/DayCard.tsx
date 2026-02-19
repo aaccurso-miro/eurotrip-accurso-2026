@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Car,
@@ -40,14 +40,33 @@ const typeLabels: Record<ActivityType, string> = {
   culture: "Cultura",
 };
 
-export default function DayCard({ day }: { day: DayData }) {
-  const [expanded, setExpanded] = useState(false);
+export default function DayCard({
+  day,
+  isToday = false,
+  defaultExpanded = false,
+}: {
+  day: DayData;
+  isToday?: boolean;
+  defaultExpanded?: boolean;
+}) {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+  const cardRef = useRef<HTMLDivElement>(null);
   const color = CITY_COLORS[day.cityId] || "#1e3a5f";
 
   const hasDriving = day.from !== day.to;
 
+  useEffect(() => {
+    if (isToday && cardRef.current) {
+      const timeout = setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 800);
+      return () => clearTimeout(timeout);
+    }
+  }, [isToday]);
+
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -55,7 +74,9 @@ export default function DayCard({ day }: { day: DayData }) {
       className="relative"
     >
       <div
-        className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4"
+        className={`bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 ${
+          isToday ? "ring-2 ring-[#e8c96a]/50 ring-offset-1" : ""
+        }`}
         style={{ borderLeftColor: color }}
       >
         {/* Header */}
@@ -73,6 +94,19 @@ export default function DayCard({ day }: { day: DayData }) {
                 >
                   {day.dayNumber}
                 </span>
+                {isToday && (
+                  <motion.span
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2.5,
+                      ease: "easeInOut",
+                    }}
+                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#e8c96a] text-[#1e3a5f] shadow-sm"
+                  >
+                    HOY
+                  </motion.span>
+                )}
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">
                     Día {day.dayNumber} — {day.weekday} {day.date}

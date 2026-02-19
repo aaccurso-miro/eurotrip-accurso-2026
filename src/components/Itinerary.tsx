@@ -1,11 +1,21 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CalendarDays } from "lucide-react";
 import { itinerary } from "@/data/itinerary";
+import { getTripDayInfo } from "@/lib/tripDay";
 import DayCard from "./DayCard";
 
 export default function Itinerary() {
+  const [todayDayNumber, setTodayDayNumber] = useState<number | null>(null);
+
+  useEffect(() => {
+    const tripState = getTripDayInfo(new Date());
+    if (tripState.phase === "during") {
+      setTodayDayNumber(tripState.dayNumber);
+    }
+  }, []);
   return (
     <section id="itinerario" className="py-20 bg-[#faf5eb]">
       <div className="max-w-3xl mx-auto px-4">
@@ -35,7 +45,12 @@ export default function Itinerary() {
 
           <div className="space-y-6 sm:pl-14">
             {itinerary.map((day) => (
-              <DayCard key={day.dayNumber} day={day} />
+              <DayCard
+                key={day.dayNumber}
+                day={day}
+                isToday={day.dayNumber === todayDayNumber}
+                defaultExpanded={day.dayNumber === todayDayNumber}
+              />
             ))}
           </div>
         </div>

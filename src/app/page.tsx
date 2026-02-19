@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
+import VistaHoy from "@/components/VistaHoy";
 import MapSection from "@/components/MapSection";
 import Itinerary from "@/components/Itinerary";
 import CityIntro from "@/components/CityIntro";
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <Countdown />
+        <VistaHoy />
         <MapSection />
         <Itinerary />
         <CityIntro />

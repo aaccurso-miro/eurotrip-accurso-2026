@@ -20,7 +20,7 @@ const cityImages: Record<string, string> = {
   praga:
     "https://images.unsplash.com/photo-1541849546-216549ae216d?w=800&q=80",
   kassel:
-    "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Wilhelmshoehe_-_Herkules_mit_Kaskaden.jpg/1280px-Wilhelmshoehe_-_Herkules_mit_Kaskaden.jpg",
 };
 
 // Spanish Wikipedia links for each city
