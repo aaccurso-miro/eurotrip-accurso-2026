@@ -50,19 +50,19 @@ export const drivingLegs: DrivingLeg[] = [
   },
   {
     from: "Praga",
-    to: "Leipzig",
-    distanceKm: 290,
-    estimatedHours: "2h45 – 3h30",
+    to: "Kassel",
+    distanceKm: 450,
+    estimatedHours: "4h30 – 5h",
     tollInfo: "Sin peaje en Alemania desde la frontera checa.",
-    notes: "Parada café en ruta. Tramo relativamente corto.",
+    notes: "Parada café en ruta. Tramo medio, más largo que a Leipzig pero directo.",
   },
   {
-    from: "Leipzig",
+    from: "Kassel",
     to: "Ámsterdam",
-    distanceKm: 650,
-    estimatedHours: "5h30 – 6h30",
+    distanceKm: 390,
+    estimatedHours: "3h45 – 4h30",
     tollInfo: "Sin peaje.",
-    notes: "2 paradas: Osnabrück y zona Utrecht/Amersfoort. Tramo final, no apurarse.",
+    notes: "1 parada: Osnabrück o zona Arnhem. Tramo final más corto y cómodo.",
   },
 ];
 

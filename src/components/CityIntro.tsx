@@ -19,8 +19,8 @@ const cityImages: Record<string, string> = {
     "https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=800&q=80",
   praga:
     "https://images.unsplash.com/photo-1541849546-216549ae216d?w=800&q=80",
-  leipzig:
-    "https://images.unsplash.com/photo-1570698473651-b2de99bae12f?w=800&q=80",
+  kassel:
+    "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80",
 };
 
 // Spanish Wikipedia links for each city
@@ -31,7 +31,7 @@ const wikiLinks: Record<string, string> = {
   admont: "https://es.wikipedia.org/wiki/Abadía_de_Admont",
   viena: "https://es.wikipedia.org/wiki/Viena",
   praga: "https://es.wikipedia.org/wiki/Praga",
-  leipzig: "https://es.wikipedia.org/wiki/Leipzig",
+  kassel: "https://es.wikipedia.org/wiki/Kassel",
 };
 
 export default function CityIntro() {

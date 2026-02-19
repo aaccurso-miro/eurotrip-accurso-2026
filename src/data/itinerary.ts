@@ -524,65 +524,66 @@ export const itinerary: DayData[] = [
     date: "3 junio",
     weekday: "Miércoles",
     from: "Praga",
-    to: "Leipzig",
-    overnightCity: "Leipzig",
-    cityId: "leipzig",
+    to: "Kassel",
+    overnightCity: "Kassel",
+    cityId: "kassel",
     activities: {
       morning: [
         {
-          title: "Viaje Praga → Leipzig",
+          title: "Viaje Praga → Kassel",
           description:
-            "Check-out tranquilo. ~2h45-3h30 de manejo con parada para café en ruta.",
+            "Check-out tranquilo. ~4h30-5h de manejo con parada para café en ruta.",
           type: "driving",
         },
       ],
       afternoon: [
         {
-          title: "Paseo por Leipzig",
+          title: "Bergpark Wilhelmshöhe",
           description:
-            "Centro muy compacto y caminable. Paseo corto + descanso.",
-          type: "walking",
+            "Visita al parque de ladera más grande de Europa (UNESCO). Estatua de Hércules, cascadas y Palacio Wilhelmshöhe con vistas espectaculares.",
+          type: "sightseeing",
         },
       ],
       evening: [
         {
-          title: "Cena en Leipzig",
+          title: "Cena en Kassel",
           description:
-            "Clásico e histórico, con platos contundentes en ambiente memorable.",
+            "Restaurante local con cocina alemana tradicional.",
           type: "food",
         },
       ],
     },
     meals: {
       merienda: {
-        name: "Kaffeehaus Riquet",
+        name: "Café en Bergpark",
         description:
-          "Café histórico con tortas. Perfecto para descansar después del viaje.",
+          "Café con vistas en el área del Palacio Wilhelmshöhe.",
       },
       dinner: {
-        name: "Auerbachs Keller",
+        name: "Restaurante local",
         description:
-          "Clásico de Leipzig, ambiente histórico (mencionado en el Fausto de Goethe). Platos contundentes sajones. Alternativa: Ratskeller local.",
+          "Cocina alemana tradicional en el centro de Kassel o cerca del alojamiento.",
       },
     },
     tips: [
-      "Leipzig es compacto: todo el centro se recorre a pie en pocas cuadras.",
+      "El Bergpark es enorme: planificar al menos 2-3 horas para recorrerlo con calma.",
+      "Las cascadas de agua se activan en horarios específicos (verificar en temporada).",
     ],
   },
   {
     dayNumber: 11,
     date: "4 junio",
     weekday: "Jueves",
-    from: "Leipzig",
+    from: "Kassel",
     to: "Ámsterdam",
     overnightCity: "",
     cityId: "amsterdam",
     activities: {
       morning: [
         {
-          title: "Viaje Leipzig → Ámsterdam",
+          title: "Viaje Kassel → Ámsterdam",
           description:
-            "~5h30-6h30 de manejo con 2 paradas. Recomendado: Osnabrück (café + baño) y zona Utrecht/Amersfoort (último estirón).",
+            "~3h45-4h30 de manejo con 1 parada. Recomendado: Osnabrück o zona Arnhem (café + baño).",
           type: "driving",
         },
       ],
@@ -610,8 +611,8 @@ export const itinerary: DayData[] = [
       },
     },
     tips: [
-      "Tramo final cómodo: no apurarse y disfrutar las últimas horas del road trip.",
-      "Parada recomendada: Osnabrück (café + baño) + zona Utrecht/Amersfoort.",
+      "Tramo final más corto que desde Leipzig: viaje más relajado de regreso.",
+      "Parada recomendada: Osnabrück o zona Arnhem/Nijmegen.",
     ],
   },
 ];

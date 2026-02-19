@@ -3,7 +3,7 @@ export const TRIP_END_DATE = new Date("2026-06-04T20:00:00+02:00");
 
 export const TOTAL_DAYS = 11;
 export const TOTAL_NIGHTS = 10;
-export const TOTAL_DISTANCE_KM = 2640;
+export const TOTAL_DISTANCE_KM = 2540;
 
 export const COLORS = {
   deepBlue: "#1e3a5f",
@@ -21,7 +21,7 @@ export const CITY_COLORS: Record<string, string> = {
   admont: "#6A5ACD",
   viena: "#DC143C",
   praga: "#DAA520",
-  leipzig: "#4169E1",
+  kassel: "#4169E1",
 } as const;
 
 export const NAV_ITEMS = [

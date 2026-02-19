@@ -58,7 +58,7 @@ export default function Hero() {
             <span className="text-[#e8c96a]">→</span>
             <span>Praga</span>
             <span className="text-[#e8c96a]">→</span>
-            <span>Leipzig</span>
+            <span>Kassel</span>
           </motion.div>
 
           <motion.div
@@ -72,7 +72,7 @@ export default function Hero() {
             <span className="text-[#e8c96a]">•</span>
             <span className="text-lg">11 días</span>
             <span className="text-[#e8c96a]">•</span>
-            <span className="text-lg">~2640 km</span>
+            <span className="text-lg">~2540 km</span>
           </motion.div>
 
           <motion.p

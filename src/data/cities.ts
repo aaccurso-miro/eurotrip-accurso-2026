@@ -176,14 +176,14 @@ export const cities: City[] = [
     ],
   },
   {
-    id: "leipzig",
-    name: "Leipzig",
+    id: "kassel",
+    name: "Kassel",
     country: "Alemania",
     flag: "🇩🇪",
-    coords: [51.3397, 12.3731],
+    coords: [51.3127, 9.4797],
     intro:
-      "Ciudad cultural de Sajonia, donde Bach fue director musical y se gestó la reunificación alemana. Un centro histórico compacto y encantador, perfecto para una parada de descanso antes de volver a casa.",
-    photos: ["/images/cities/leipzig-01.jpg"],
+      "Ciudad de Hesse famosa por el espectacular Bergpark Wilhelmshöhe, el parque de ladera más grande de Europa y Patrimonio de la Humanidad UNESCO. El Palacio de Wilhelmshöhe y la estatua de Hércules dominan las colinas.",
+    photos: ["/images/cities/kassel-01.jpg"],
     nights: 1,
     weather: {
       avgHighC: 19,
@@ -196,8 +196,8 @@ export const cities: City[] = [
     currencyCode: "EUR",
     language: "Alemán",
     highlights: [
-      "Auerbachs Keller",
-      "Kaffeehaus Riquet",
+      "Bergpark Wilhelmshöhe",
+      "Palacio de Wilhelmshöhe",
       "Centro compacto y caminable",
     ],
   },
