@@ -15,6 +15,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    
+    // Small delay to allow menu to close before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -29,6 +42,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <a
             href="#hero"
+            onClick={(e) => handleNavClick(e, "#hero")}
             className={`font-[family-name:var(--font-playfair)] text-xl font-bold transition-colors ${
               scrolled ? "text-[#1e3a5f]" : "text-white"
             }`}
@@ -42,6 +56,7 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   scrolled
                     ? "text-gray-700 hover:text-[#1e3a5f] hover:bg-[#1e3a5f]/5"
@@ -79,7 +94,7 @@ export default function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="block px-3 py-2 rounded-lg text-gray-700 hover:text-[#1e3a5f] hover:bg-[#1e3a5f]/5 text-sm font-medium"
                 >
                   {item.label}
