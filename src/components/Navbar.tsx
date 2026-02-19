@@ -21,6 +21,9 @@ export default function Navbar() {
     e.preventDefault();
     setMobileOpen(false);
     
+    // Update URL hash
+    window.history.pushState(null, "", href);
+    
     // Small delay to allow menu to close before scrolling
     setTimeout(() => {
       const element = document.querySelector(href);
