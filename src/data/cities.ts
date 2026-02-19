@@ -28,7 +28,7 @@ export const cities: City[] = [
     flag: "🇳🇱",
     coords: [52.3676, 4.9041],
     intro:
-      "Punto de partida y llegada del viaje. La ciudad de los canales, bicicletas y museos de clase mundial. Desde acá arrancamos la aventura en auto hacia el corazón de Europa.",
+      "Punto de partida y llegada del viaje. La ciudad de los canales, bicicletas y museos de clase mundial. Desde acá arrancamos nuestro recorrido en auto hacia el corazón de Europa.",
     photos: ["/images/cities/amsterdam-01.jpg"],
     nights: 0,
     weather: {

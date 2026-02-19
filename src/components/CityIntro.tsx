@@ -83,11 +83,14 @@ export default function CityIntro() {
                   <div className="absolute bottom-3 left-4 right-4">
                     <div className="flex items-center gap-2">
                       <span className="text-2xl">{city.flag}</span>
-                      <h3 className="text-xl font-bold text-white font-[family-name:var(--font-playfair)]">
+                      <h3 
+                        className="text-xl font-bold text-white font-[family-name:var(--font-playfair)] truncate"
+                        title={city.name}
+                      >
                         {city.name}
                       </h3>
                     </div>
-                    <p className="text-white/70 text-sm">{city.country}</p>
+                    <p className="text-white/70 text-sm truncate" title={city.country}>{city.country}</p>
                   </div>
                   {city.nights > 0 ? (
                     <div

@@ -22,7 +22,7 @@ export default function Itinerary() {
             </h2>
           </div>
           <p className="text-gray-500 max-w-xl mx-auto">
-            11 días de aventura, ritmo &quot;modo padres&quot;: una actividad principal por
+            11 días de travesía, ritmo relajado: una actividad principal por
             la mañana, algo liviano a la tarde, y buena cena. Tocá cada día para
             ver los detalles.
           </p>

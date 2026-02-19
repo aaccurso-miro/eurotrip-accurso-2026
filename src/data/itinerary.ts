@@ -591,7 +591,7 @@ export const itinerary: DayData[] = [
         {
           title: "Llegada a casa",
           description:
-            "Dejen el auto, ducha, y a descansar. ¡Fin de la aventura!",
+            "Dejen el auto, ducha, y a descansar. ¡Fin del viaje!",
           type: "rest",
         },
       ],

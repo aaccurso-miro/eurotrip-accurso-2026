@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Eurotrip Accurso 2026 🚗",
     description:
-      "Road trip de 11 días por Europa: Ámsterdam → Rothenburg → Salzburgo → Viena → Praga → Kassel. 2540 km de aventura familiar.",
+      "Road trip de 11 días por Europa: Ámsterdam → Rothenburg → Salzburgo → Viena → Praga → Kassel. 2540 km de recorrido familiar.",
     type: "website",
     url: "https://eurotrip-accurso-2026.vercel.app",
     images: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Eurotrip Accurso 2026 🚗",
     description:
-      "Road trip de 11 días por Europa: Ámsterdam → Viena → Praga → Kassel. 2540 km de aventura familiar.",
+      "Road trip de 11 días por Europa: Ámsterdam → Viena → Praga → Kassel. 2540 km de recorrido familiar.",
     images: [
       "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1200&h=630&fit=crop&q=80",
     ],

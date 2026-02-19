@@ -77,21 +77,21 @@ export default function DayCard({ day }: { day: DayData }) {
                   <h3 className="text-lg font-bold text-gray-800">
                     Día {day.dayNumber} — {day.weekday} {day.date}
                   </h3>
-                  <div className="flex items-center gap-2 text-sm text-gray-500 mt-0.5">
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mt-0.5 flex-wrap">
                     {hasDriving ? (
                       <>
-                        <span>{day.from}</span>
-                        <Car size={14} className="text-[#d4a843]" />
-                        <span>{day.to}</span>
+                        <span className="truncate max-w-[100px] sm:max-w-none" title={day.from}>{day.from}</span>
+                        <Car size={14} className="text-[#d4a843] shrink-0" />
+                        <span className="truncate max-w-[100px] sm:max-w-none" title={day.to}>{day.to}</span>
                       </>
                     ) : (
-                      <span>{day.from} (día completo)</span>
+                      <span className="truncate" title={`${day.from} (día completo)`}>{day.from} (día completo)</span>
                     )}
                     {day.overnightCity && (
                       <>
                         <span className="text-gray-300">|</span>
-                        <Bed size={14} className="text-gray-400" />
-                        <span className="text-gray-400">
+                        <Bed size={14} className="text-gray-400 shrink-0" />
+                        <span className="text-gray-400 truncate max-w-[100px] sm:max-w-none" title={day.overnightCity}>
                           {day.overnightCity}
                         </span>
                       </>

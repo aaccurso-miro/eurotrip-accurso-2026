@@ -45,8 +45,8 @@ export default function WeatherInfo() {
                 className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-lg">{city.flag}</span>
-                  <h3 className="font-bold text-gray-800">{city.name}</h3>
+                  <span className="text-lg shrink-0">{city.flag}</span>
+                  <h3 className="font-bold text-gray-800 truncate" title={city.name}>{city.name}</h3>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">

@@ -21,7 +21,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pb-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function Hero() {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="text-xl sm:text-2xl text-white/60 font-[family-name:var(--font-playfair)] italic"
           >
-            Una aventura en auto por el corazón de Europa
+            Un viaje en auto por el corazón de Europa
           </motion.p>
         </motion.div>
 

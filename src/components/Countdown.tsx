@@ -108,7 +108,7 @@ export default function Countdown() {
               transition={{ delay: 0.3 }}
               className="mt-8 text-gray-500 text-lg"
             >
-              para arrancar la aventura 🇦🇷 ✈️ 🇳🇱 🚗 🇪🇺
+              para arrancar el viaje 🇦🇷 ✈️ 🇳🇱 🚗 🇪🇺
             </motion.p>
           </>
         ) : (
@@ -122,7 +122,7 @@ export default function Countdown() {
               ¡Buen viaje, familia!
             </h2>
             <p className="text-xl text-gray-500">
-              La aventura ya comenzó
+              El viaje ya comenzó
             </p>
           </motion.div>
         )}

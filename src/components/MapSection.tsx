@@ -30,7 +30,7 @@ export default function MapSection() {
             </h2>
           </div>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            7 ciudades, 4 países, ~2540 km de aventura por el corazón de Europa.
+            7 ciudades, 4 países, ~2540 km de recorrido por el corazón de Europa.
             Tocá cada marcador para ver los detalles.
           </p>
         </motion.div>

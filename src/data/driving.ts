@@ -94,7 +94,7 @@ export const drivingTips = [
   {
     title: "Pausa cada 2-2.5 horas",
     description:
-      "Modo padres: parada de café y estiramiento cada 2-2.5h de manejo. ¡Los pies felices son clave!",
+      "Parada de café y estiramiento cada 2-2.5h de manejo. ¡Los pies felices son clave!",
     icon: "coffee" as const,
   },
   {
