@@ -183,7 +183,7 @@ export const cities: City[] = [
     coords: [51.3127, 9.4797],
     intro:
       "Ciudad de Hesse famosa por el espectacular Bergpark Wilhelmshöhe, el parque de ladera más grande de Europa y Patrimonio de la Humanidad UNESCO. El Palacio de Wilhelmshöhe y la estatua de Hércules dominan las colinas.",
-    photos: ["/images/cities/kassel-01.jpg"],
+    photos: ["https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Wilhelmshoehe_-_Herkules_mit_Kaskaden.jpg/1280px-Wilhelmshoehe_-_Herkules_mit_Kaskaden.jpg"],
     nights: 1,
     weather: {
       avgHighC: 19,
