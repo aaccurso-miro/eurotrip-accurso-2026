@@ -13,7 +13,7 @@ const ROUTE_CITY_IDS = [
   "admont",
   "viena",
   "praga",
-  "leipzig",
+  "kassel",
   "amsterdam",
 ];
 
@@ -39,7 +39,7 @@ export default function MapComponent() {
 
     // Add markers
     const markers: L.LatLng[] = [];
-    const routeOrder = ["amsterdam", "rothenburg", "salzburg", "admont", "viena", "praga", "leipzig"];
+    const routeOrder = ["amsterdam", "rothenburg", "salzburg", "admont", "viena", "praga", "kassel"];
 
     routeOrder.forEach((cityId, index) => {
       const city = cities.find((c) => c.id === cityId);
