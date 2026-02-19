@@ -9,10 +9,6 @@ import { NAV_ITEMS } from "@/lib/constants";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return document.documentElement.getAttribute("data-theme") === "dark";
-  });
   const router = useRouter();
 
   useEffect(() => {
@@ -22,9 +18,8 @@ export default function Navbar() {
   }, []);
 
   const toggleTheme = () => {
-    const next = !isDark;
-    setIsDark(next);
-    if (next) {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    if (!isDark) {
       document.documentElement.setAttribute("data-theme", "dark");
       localStorage.setItem("theme", "dark");
     } else {
@@ -70,7 +65,7 @@ export default function Navbar() {
           <a
             href="#hero"
             onClick={(e) => handleNavClick(e, "#hero")}
-            className={`font-[family-name:var(--font-playfair)] text-xl font-bold transition-colors ${
+            className={`font-[family-name:var(--font-playfair)] text-xl font-bold transition-colors cursor-pointer ${
               scrolled ? "text-[#1e3a5f] dark:text-[#93c5fd]" : "text-white"
             }`}
           >
@@ -84,7 +79,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                   scrolled
                     ? "text-gray-700 dark:text-gray-300 hover:text-[#1e3a5f] dark:hover:text-[#93c5fd] hover:bg-[#1e3a5f]/5 dark:hover:bg-white/10"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -93,21 +88,22 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
-            {/* Theme toggle */}
+            {/* Theme toggle — CSS-based icons avoid hydration mismatch */}
             <button
               onClick={toggleTheme}
-              aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-              className={`p-2 rounded-lg transition-colors ${
+              aria-label="Cambiar modo de color"
+              className={`p-2 rounded-lg transition-colors cursor-pointer ${
                 scrolled
                   ? "text-gray-600 dark:text-gray-300 hover:text-[#1e3a5f] dark:hover:text-[#93c5fd] hover:bg-[#1e3a5f]/5 dark:hover:bg-white/10"
                   : "text-white/80 hover:text-white hover:bg-white/10"
               }`}
             >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              <Moon size={18} className="block dark:hidden" />
+              <Sun size={18} className="hidden dark:block" />
             </button>
             <button
               onClick={handleLogout}
-              className={`ml-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
+              className={`ml-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 cursor-pointer ${
                 scrolled
                   ? "text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
                   : "text-white/90 hover:text-white hover:bg-white/10"
@@ -122,7 +118,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden p-2 rounded-lg ${
+            className={`md:hidden p-2 rounded-lg cursor-pointer ${
               scrolled ? "text-[#1e3a5f] dark:text-gray-200" : "text-white"
             }`}
           >
@@ -146,22 +142,24 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-[#1e3a5f] dark:hover:text-[#93c5fd] hover:bg-[#1e3a5f]/5 dark:hover:bg-white/10 text-sm font-medium"
+                  className="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-[#1e3a5f] dark:hover:text-[#93c5fd] hover:bg-[#1e3a5f]/5 dark:hover:bg-white/10 text-sm font-medium cursor-pointer"
                 >
                   {item.label}
                 </a>
               ))}
-              {/* Theme toggle in mobile */}
+              {/* Theme toggle in mobile — CSS-based */}
               <button
                 onClick={toggleTheme}
-                className="w-full text-left px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-[#1e3a5f] dark:hover:text-[#93c5fd] hover:bg-[#1e3a5f]/5 dark:hover:bg-white/10 text-sm font-medium flex items-center gap-2"
+                className="w-full text-left px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-[#1e3a5f] dark:hover:text-[#93c5fd] hover:bg-[#1e3a5f]/5 dark:hover:bg-white/10 text-sm font-medium flex items-center gap-2 cursor-pointer"
               >
-                {isDark ? <Sun size={16} /> : <Moon size={16} />}
-                <span>{isDark ? "Modo claro" : "Modo oscuro"}</span>
+                <Moon size={16} className="block dark:hidden" />
+                <Sun size={16} className="hidden dark:block" />
+                <span className="block dark:hidden">Modo oscuro</span>
+                <span className="hidden dark:block">Modo claro</span>
               </button>
               <button
                 onClick={handleLogout}
-                className="w-full text-left px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-sm font-medium flex items-center gap-2"
+                className="w-full text-left px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-sm font-medium flex items-center gap-2 cursor-pointer"
               >
                 <LogOut size={16} />
                 <span>Salir</span>
