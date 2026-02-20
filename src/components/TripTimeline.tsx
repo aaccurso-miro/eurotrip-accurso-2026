@@ -162,8 +162,16 @@ export default function TripTimeline() {
                         />
                       )}
                       <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, margin: "-40px" }}
+                        transition={{
+                          delay: index * 0.12,
+                          type: "spring",
+                          stiffness: 220,
+                          damping: 14,
+                        }}
                         animate={isActive ? { scale: [1, 1.08, 1] } : {}}
-                        transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
                         className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-xl shadow-lg border-4 border-white dark:border-gray-800 relative z-10"
                         style={{ background: color }}
                       >
@@ -171,63 +179,90 @@ export default function TripTimeline() {
                       </motion.div>
                     </div>
 
-                    {/* City name */}
-                    <p className="text-xs sm:text-sm font-bold text-center text-[#1e3a5f] dark:text-[#93c5fd] leading-tight px-1 mb-1.5">
-                      {stop.label}
-                    </p>
+                    {/* City name + badge + date — fade in after circle */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ delay: index * 0.12 + 0.2, duration: 0.4 }}
+                      className="flex flex-col items-center"
+                    >
+                      <p className="text-xs sm:text-sm font-bold text-center text-[#1e3a5f] dark:text-[#93c5fd] leading-tight px-1 mb-1.5">
+                        {stop.label}
+                      </p>
 
-                    {/* Badge */}
-                    {isFirst ? (
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-[#1e3a5f] dark:bg-[#1e3a5f]/80 text-white font-medium mb-1">
-                        Inicio
-                      </span>
-                    ) : isLast ? (
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-[#1e3a5f] dark:bg-[#1e3a5f]/80 text-white font-medium mb-1">
-                        Fin
-                      </span>
-                    ) : stop.isStop ? (
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-medium mb-1">
-                        Parada
-                      </span>
-                    ) : (
-                      <span
-                        className="text-xs px-2 py-0.5 rounded-full text-white font-medium mb-1"
-                        style={{ background: color }}
-                      >
-                        {stop.nights} noche{stop.nights !== 1 ? "s" : ""}
-                      </span>
-                    )}
+                      {isFirst ? (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-[#1e3a5f] dark:bg-[#1e3a5f]/80 text-white font-medium mb-1">
+                          Inicio
+                        </span>
+                      ) : isLast ? (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-[#1e3a5f] dark:bg-[#1e3a5f]/80 text-white font-medium mb-1">
+                          Fin
+                        </span>
+                      ) : stop.isStop ? (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-medium mb-1">
+                          Parada
+                        </span>
+                      ) : (
+                        <span
+                          className="text-xs px-2 py-0.5 rounded-full text-white font-medium mb-1"
+                          style={{ background: color }}
+                        >
+                          {stop.nights} noche{stop.nights !== 1 ? "s" : ""}
+                        </span>
+                      )}
 
-                    {/* Date */}
-                    <p className="text-xs text-gray-500 dark:text-gray-400 text-center leading-tight px-1">
-                      {stop.dateLabel}
-                    </p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 text-center leading-tight px-1">
+                        {stop.dateLabel}
+                      </p>
+                    </motion.div>
                   </motion.div>
 
                   {/* Connector */}
                   {!isLast && (
-                    <motion.div
-                      initial={{ opacity: 0, scaleX: 0 }}
-                      whileInView={{ opacity: 1, scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.08 + 0.1, duration: 0.4 }}
-                      className="flex flex-col items-center origin-left w-[80px] sm:w-[100px] shrink-0"
-                    >
-                      <p className="text-xs font-semibold text-[#d4a843] mb-1 whitespace-nowrap">
+                    <div className="flex flex-col items-center w-[80px] sm:w-[100px] shrink-0">
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.12 + 0.25, duration: 0.3 }}
+                        className="text-xs font-semibold text-[#d4a843] mb-1 whitespace-nowrap"
+                      >
                         {stop.kmToNext ? `${stop.kmToNext} km` : ""}
-                      </p>
-                      <div className="relative w-full flex items-center">
-                        <div className="flex-1 h-0.5 bg-[#d4a843] dark:bg-[#d4a843]/60" />
-                        <Car
-                          size={16}
-                          className="mx-1 text-[#d4a843] dark:text-[#d4a843]/80 shrink-0"
+                      </motion.p>
+
+                      {/* Line + animated car */}
+                      <div className="relative w-full h-5 flex items-center">
+                        {/* Drawing line */}
+                        <motion.div
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.12 + 0.2, duration: 0.5, ease: "easeOut" }}
+                          className="w-full h-0.5 bg-[#d4a843] dark:bg-[#d4a843]/60 origin-left"
                         />
-                        <div className="flex-1 h-0.5 bg-[#d4a843] dark:bg-[#d4a843]/60" />
+                        {/* Car driving across */}
+                        <motion.div
+                          initial={{ x: -44 }}
+                          whileInView={{ x: 44 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.12 + 0.45, duration: 0.7, ease: "easeInOut" }}
+                          className="absolute left-1/2 -translate-x-1/2"
+                        >
+                          <Car size={13} className="text-[#d4a843] dark:text-[#d4a843]/80" />
+                        </motion.div>
                       </div>
-                      <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 whitespace-nowrap">
+
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.12 + 0.25, duration: 0.3 }}
+                        className="text-xs text-gray-400 dark:text-gray-500 mt-1 whitespace-nowrap"
+                      >
                         {stop.hToNext || ""}
-                      </p>
-                    </motion.div>
+                      </motion.p>
+                    </div>
                   )}
                 </div>
               );

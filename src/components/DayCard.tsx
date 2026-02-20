@@ -16,6 +16,7 @@ import {
   Sun,
   Sunset,
   Moon,
+  MapPin,
 } from "lucide-react";
 import type { DayData, ActivityType } from "@/data/itinerary";
 import { CITY_COLORS } from "@/lib/constants";
@@ -39,6 +40,12 @@ const typeLabels: Record<ActivityType, string> = {
   walking: "Paseo",
   culture: "Cultura",
 };
+
+const MAPPABLE_TYPES: ActivityType[] = ["sightseeing", "culture", "walking", "food", "music"];
+
+function mapsUrl(title: string, city: string) {
+  return `https://www.google.com/maps/search/${encodeURIComponent(`${title}, ${city}`)}`;
+}
 
 export default function DayCard({
   day,
@@ -181,6 +188,7 @@ export default function DayCard({
                       label="Mañana"
                       activities={day.activities.morning}
                       color={color}
+                      city={day.overnightCity}
                     />
                   )}
                   {day.activities.afternoon && day.activities.afternoon.length > 0 && (
@@ -189,6 +197,7 @@ export default function DayCard({
                       label="Tarde"
                       activities={day.activities.afternoon}
                       color={color}
+                      city={day.overnightCity}
                     />
                   )}
                   {day.activities.evening && day.activities.evening.length > 0 && (
@@ -197,6 +206,7 @@ export default function DayCard({
                       label="Noche"
                       activities={day.activities.evening}
                       color={color}
+                      city={day.overnightCity}
                     />
                   )}
                 </div>
@@ -258,11 +268,13 @@ function TimeBlock({
   label,
   activities,
   color,
+  city,
 }: {
   icon: React.ReactNode;
   label: string;
   activities: DayData["activities"]["morning"];
   color: string;
+  city: string;
 }) {
   return (
     <div>
@@ -277,12 +289,24 @@ function TimeBlock({
               {typeIcons[act.type]}
             </span>
             <div>
-              <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center gap-1.5 flex-wrap">
                 {act.title}
                 {act.optional && (
-                  <span className="ml-2 text-xs text-[#d4a843] bg-[#d4a843]/10 px-2 py-0.5 rounded-full">
+                  <span className="text-xs text-[#d4a843] bg-[#d4a843]/10 px-2 py-0.5 rounded-full">
                     Opcional
                   </span>
+                )}
+                {MAPPABLE_TYPES.includes(act.type) && (
+                  <a
+                    href={mapsUrl(act.title, city)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Ver en Google Maps"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-gray-300 dark:text-gray-600 hover:text-[#d4a843] dark:hover:text-[#d4a843] transition-colors"
+                  >
+                    <MapPin size={12} />
+                  </a>
                 )}
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{act.description}</p>
