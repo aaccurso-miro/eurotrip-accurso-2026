@@ -1,3 +1,11 @@
+export interface HotelBooking {
+  name: string;
+  checkIn: string;  // e.g. "25 may"
+  checkOut: string; // e.g. "26 may"
+  rooms: string;    // "—" or "2 habitaciones"
+  website: string;
+}
+
 export interface City {
   id: string;
   name: string;
@@ -7,6 +15,7 @@ export interface City {
   intro: string;
   photos: string[];
   nights: number;
+  hotel?: HotelBooking;
   weather: {
     avgHighC: number;
     avgLowC: number;
@@ -53,6 +62,13 @@ export const cities: City[] = [
       "Un pueblo medieval sacado de un cuento de hadas. Calles empedradas, casas con entramado de madera y murallas que se pueden recorrer a pie. El famoso Plönlein es la postal perfecta.",
     photos: ["/images/cities/rothenburg-01.jpg"],
     nights: 1,
+    hotel: {
+      name: "Gästehaus Eberlein",
+      checkIn: "25 may",
+      checkOut: "26 may",
+      rooms: "—",
+      website: "https://www.hotel-eberlein.de/",
+    },
     weather: {
       avgHighC: 19,
       avgLowC: 8,
@@ -80,6 +96,13 @@ export const cities: City[] = [
       "La ciudad natal de Mozart, rodeada por los Alpes. Su centro histórico es Patrimonio de la Humanidad, con la imponente Fortaleza Hohensalzburg dominando el horizonte y jardines barrocos espectaculares.",
     photos: ["/images/cities/salzburg-01.jpg"],
     nights: 2,
+    hotel: {
+      name: "Hotel Turnerwirt",
+      checkIn: "26 may",
+      checkOut: "28 may",
+      rooms: "2 habitaciones",
+      website: "https://turnerwirt.at/",
+    },
     weather: {
       avgHighC: 19,
       avgLowC: 8,
@@ -129,6 +152,13 @@ export const cities: City[] = [
       "La capital imperial de la música clásica. Palacios grandiosos como Schönbrunn y Belvedere, cafés históricos con la mejor torta del mundo, y una elegancia que se respira en cada esquina.",
     photos: ["/images/cities/viena-01.jpg"],
     nights: 3,
+    hotel: {
+      name: "Leonardo Hotel Vienna Schönbrunn",
+      checkIn: "28 may",
+      checkOut: "31 may",
+      rooms: "2 habitaciones",
+      website: "https://www.leonardo-hotels.com/vienna/leonardo-hotel-vienna-schonbrunn",
+    },
     weather: {
       avgHighC: 21,
       avgLowC: 11,
@@ -157,6 +187,13 @@ export const cities: City[] = [
       "La ciudad de las cien torres, con uno de los centros históricos mejor conservados de Europa. El Castillo de Praga, el Puente de Carlos al atardecer y la cerveza más barata del continente los esperan.",
     photos: ["/images/cities/praga-01.jpg"],
     nights: 3,
+    hotel: {
+      name: "Grand Hotel International - Czech Leading Hotels",
+      checkIn: "31 may",
+      checkOut: "3 jun",
+      rooms: "2 habitaciones",
+      website: "https://www.hotelint.cz/en/",
+    },
     weather: {
       avgHighC: 20,
       avgLowC: 10,
@@ -185,6 +222,13 @@ export const cities: City[] = [
       "Ciudad de Hesse famosa por el espectacular Bergpark Wilhelmshöhe, el parque de ladera más grande de Europa y Patrimonio de la Humanidad UNESCO. El Palacio de Wilhelmshöhe y la estatua de Hércules dominan las colinas.",
     photos: ["https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Wilhelmshoehe_-_Herkules_mit_Kaskaden.jpg/1280px-Wilhelmshoehe_-_Herkules_mit_Kaskaden.jpg"],
     nights: 1,
+    hotel: {
+      name: "MountainPark | Event- und Tagungshotel",
+      checkIn: "3 jun",
+      checkOut: "4 jun",
+      rooms: "2 habitaciones",
+      website: "https://www.mountainparkhotel.de/",
+    },
     weather: {
       avgHighC: 19,
       avgLowC: 9,
