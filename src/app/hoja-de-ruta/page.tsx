@@ -19,6 +19,8 @@ export default function HojaDeRutaPage() {
     );
   }
 
+  // Brittle: matches by name string. If `leg.to` and `City.name` diverge, the
+  // hotel section silently disappears. Acceptable for the one-leg scope.
   const destCity = cities.find((c) => c.name === leg.to);
   const totalDriveMin = leg.stops.reduce((sum, s) => sum + s.durationMin, 0);
 
@@ -115,7 +117,7 @@ export default function HojaDeRutaPage() {
                       </span>
                     </p>
                     <p className="text-xs text-gray-600 dark:text-gray-300 mt-0.5 flex items-center gap-1.5">
-                      <Coffee size={12} className="text-[#d4a843]" />
+                      <Coffee size={12} className="text-[#d4a843]" aria-hidden="true" />
                       {stop.durationMin} min · {stop.purpose}
                     </p>
                   </div>
@@ -129,6 +131,7 @@ export default function HojaDeRutaPage() {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-baseline gap-3 flex-wrap">
+                    {/* Hardcoded for leg 1 (YAGNI). Compute from stops + remaining drive time when more legs are added. */}
                     <span className="text-lg font-bold text-[#1e3a5f] dark:text-[#93c5fd] font-mono">
                       ~13:00
                     </span>
@@ -148,7 +151,7 @@ export default function HojaDeRutaPage() {
           {destCity?.hotel && (
             <section className="print-keep mb-6 rounded-xl border border-gray-200 dark:border-gray-700 p-5">
               <div className="flex items-center gap-2 mb-2">
-                <Hotel size={16} className="text-[#d4a843]" />
+                <Hotel size={16} className="text-[#d4a843]" aria-hidden="true" />
                 <h2 className="text-sm uppercase tracking-widest font-semibold text-gray-700 dark:text-gray-200">
                   Hotel destino
                 </h2>
@@ -184,7 +187,7 @@ export default function HojaDeRutaPage() {
           {/* Weather box — fill by hand */}
           <section className="print-keep rounded-xl border border-gray-200 dark:border-gray-700 p-5">
             <div className="flex items-center gap-2 mb-2">
-              <Cloud size={16} className="text-[#d4a843]" />
+              <Cloud size={16} className="text-[#d4a843]" aria-hidden="true" />
               <h2 className="text-sm uppercase tracking-widest font-semibold text-gray-700 dark:text-gray-200">
                 Clima previsto
               </h2>
