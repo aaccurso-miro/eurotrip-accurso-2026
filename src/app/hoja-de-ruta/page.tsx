@@ -11,7 +11,7 @@ export const metadata = {
 export default function HojaDeRutaPage() {
   const leg = drivingLegs.find((l) => l.stops && l.stops.length > 0);
 
-  if (!leg || !leg.stops || !leg.departureTime) {
+  if (!leg || !leg.stops || !leg.departureTime || !leg.startAddress) {
     return (
       <main className="min-h-screen flex items-center justify-center p-8">
         <p className="text-gray-600">No hay hoja de ruta cargada todavía.</p>
@@ -22,12 +22,8 @@ export default function HojaDeRutaPage() {
   // Brittle: matches by name string. If `leg.to` and `City.name` diverge, the
   // hotel section silently disappears. Acceptable for the one-leg scope.
   const destCity = cities.find((c) => c.name === leg.to);
-  const totalDriveMin = leg.stops.reduce((sum, s) => sum + s.durationMin, 0);
-
-  // Estimated arrival = last stop's estimatedArrival + duration + drive time to destination.
-  // Kept implicit in the timeline; the destination row uses a simple "~HH:MM" hardcoded below.
-  // We compute a rough total trip time string for the header.
-  const headerTotal = `~${leg.estimatedHours} de manejo + ${totalDriveMin} min de paradas`;
+  const totalStopMin = leg.stops.reduce((sum, s) => sum + s.durationMin, 0);
+  const headerTotal = `~${leg.estimatedHours} de manejo + ${totalStopMin} min de paradas`;
 
   return (
     <main className="min-h-screen bg-[#faf5eb] dark:bg-[#0f172a] py-10 px-4 print:bg-white print:py-0">
@@ -38,7 +34,7 @@ export default function HojaDeRutaPage() {
             href="/#manejo"
             className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#1e3a5f] dark:hover:text-[#93c5fd]"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft size={16} aria-hidden="true" />
             Volver al sitio
           </Link>
           <PrintButton />
@@ -70,7 +66,10 @@ export default function HojaDeRutaPage() {
           </header>
 
           {/* Timeline */}
-          <section className="print-keep mb-8">
+          <section className="print-keep mb-8" aria-labelledby="timeline-heading">
+            <h2 id="timeline-heading" className="sr-only">
+              Itinerario del tramo
+            </h2>
             <ol className="relative space-y-6">
               {/* Departure */}
               <li className="flex gap-4">
@@ -257,7 +256,7 @@ export default function HojaDeRutaPage() {
             </dl>
             {leg.weatherForecast && (
               <p className="print-hidden text-[10px] text-gray-400 dark:text-gray-500 mt-3 italic">
-                Pronóstico cargado el 23 may. Revisá la mañana del viaje y reimprimí si cambió.
+                Pronóstico cargado el {leg.weatherForecast.fetchedOn}. Revisá la mañana del viaje y reimprimí si cambió.
               </p>
             )}
           </section>

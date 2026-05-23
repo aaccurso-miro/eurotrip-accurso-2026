@@ -30,6 +30,7 @@ export interface DrivingLeg {
   routeMapsUrl?: string;
   stops?: DrivingStop[];
   weatherForecast?: {
+    fetchedOn: string; // "23 mayo 2026" — when the forecast was captured
     departure: WeatherSnapshot;
     arrival: WeatherSnapshot;
   };
@@ -50,7 +51,7 @@ export const drivingLegs: DrivingLeg[] = [
     routeMapsUrl:
       "https://www.google.com/maps/dir/Orcastraat+3,+Amsterdam,+Netherlands/Rastst%C3%A4tte+Ohligser+Heide+West,+Germany/Rastst%C3%A4tte+Spessart+S%C3%BCd,+Germany/Rothenburg+ob+der+Tauber,+Germany/",
     weatherForecast: {
-      // Pronóstico al 23 mayo 2026 (2 días antes). Revisar la mañana del viaje.
+      fetchedOn: "23 mayo 2026",
       departure: {
         summary: "Soleado y cálido",
         highC: 22,
