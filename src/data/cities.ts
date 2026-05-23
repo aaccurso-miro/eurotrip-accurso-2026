@@ -4,6 +4,8 @@ export interface HotelBooking {
   checkOut: string; // e.g. "26 may"
   rooms: string;    // "—" or "2 habitaciones"
   website: string;
+  address?: string; // full street address with postal code
+  phone?: string;   // international format
 }
 
 export interface City {
@@ -68,6 +70,8 @@ export const cities: City[] = [
       checkOut: "26 may",
       rooms: "—",
       website: "https://www.hotel-eberlein.de/",
+      address: "Winterbachstraße 4, 91541 Rothenburg o.T., Alemania",
+      phone: "+49 9861 4672",
     },
     weather: {
       avgHighC: 19,

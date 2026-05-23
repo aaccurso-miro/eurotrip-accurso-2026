@@ -8,6 +8,13 @@ export interface DrivingStop {
   mapsUrl?: string;
 }
 
+export interface WeatherSnapshot {
+  summary: string;     // "Soleado, cálido"
+  highC: number;
+  lowC: number;
+  rainPct?: number;    // probability of rain, 0-100
+}
+
 export interface DrivingLeg {
   from: string;
   to: string;
@@ -22,6 +29,10 @@ export interface DrivingLeg {
   startAddress?: string;    // "Orcastraat 3, Ámsterdam"
   routeMapsUrl?: string;
   stops?: DrivingStop[];
+  weatherForecast?: {
+    departure: WeatherSnapshot;
+    arrival: WeatherSnapshot;
+  };
 }
 
 export const drivingLegs: DrivingLeg[] = [
@@ -38,6 +49,21 @@ export const drivingLegs: DrivingLeg[] = [
     startAddress: "Orcastraat 3, Ámsterdam",
     routeMapsUrl:
       "https://www.google.com/maps/dir/Orcastraat+3,+Amsterdam,+Netherlands/Rastst%C3%A4tte+Ohligser+Heide+West,+Germany/Rastst%C3%A4tte+Spessart+S%C3%BCd,+Germany/Rothenburg+ob+der+Tauber,+Germany/",
+    weatherForecast: {
+      // Pronóstico al 23 mayo 2026 (2 días antes). Revisar la mañana del viaje.
+      departure: {
+        summary: "Soleado y cálido",
+        highC: 22,
+        lowC: 13,
+        rainPct: 10,
+      },
+      arrival: {
+        summary: "Nublado, posible llovizna",
+        highC: 15,
+        lowC: 7,
+        rainPct: 40,
+      },
+    },
     stops: [
       {
         name: "Raststätte Ohligser Heide West",

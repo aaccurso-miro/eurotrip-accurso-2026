@@ -172,19 +172,34 @@ export default function HojaDeRutaPage() {
                   <dt className="text-gray-500 dark:text-gray-400 w-24 shrink-0">
                     Dirección:
                   </dt>
-                  <dd className="text-gray-700 dark:text-gray-300 border-b border-dashed border-gray-300 dark:border-gray-600 flex-1" />
+                  <dd className="text-gray-700 dark:text-gray-300 flex-1">
+                    {destCity.hotel.address ?? (
+                      <span className="inline-block w-full border-b border-dashed border-gray-300 dark:border-gray-600 h-4" />
+                    )}
+                  </dd>
                 </div>
                 <div className="flex gap-2">
                   <dt className="text-gray-500 dark:text-gray-400 w-24 shrink-0">
                     Teléfono:
                   </dt>
-                  <dd className="text-gray-700 dark:text-gray-300 border-b border-dashed border-gray-300 dark:border-gray-600 flex-1" />
+                  <dd className="text-gray-700 dark:text-gray-300 flex-1">
+                    {destCity.hotel.phone ? (
+                      <a
+                        href={`tel:${destCity.hotel.phone.replace(/\s+/g, "")}`}
+                        className="underline decoration-dotted"
+                      >
+                        {destCity.hotel.phone}
+                      </a>
+                    ) : (
+                      <span className="inline-block w-full border-b border-dashed border-gray-300 dark:border-gray-600 h-4" />
+                    )}
+                  </dd>
                 </div>
               </dl>
             </section>
           )}
 
-          {/* Weather box — fill by hand */}
+          {/* Weather box */}
           <section className="print-keep rounded-xl border border-gray-200 dark:border-gray-700 p-5">
             <div className="flex items-center gap-2 mb-2">
               <Cloud size={16} className="text-[#d4a843]" aria-hidden="true" />
@@ -192,20 +207,59 @@ export default function HojaDeRutaPage() {
                 Clima previsto
               </h2>
             </div>
-            <dl className="space-y-1.5 text-sm">
+            <dl className="space-y-2 text-sm">
               <div className="flex gap-2">
                 <dt className="text-gray-500 dark:text-gray-400 w-40 shrink-0">
                   {leg.from} (salida):
                 </dt>
-                <dd className="text-gray-700 dark:text-gray-300 border-b border-dashed border-gray-300 dark:border-gray-600 flex-1" />
+                <dd className="text-gray-700 dark:text-gray-300 flex-1">
+                  {leg.weatherForecast ? (
+                    <>
+                      {leg.weatherForecast.departure.summary} ·{" "}
+                      <span className="font-mono">
+                        {leg.weatherForecast.departure.highC}° /{" "}
+                        {leg.weatherForecast.departure.lowC}°
+                      </span>
+                      {typeof leg.weatherForecast.departure.rainPct === "number" && (
+                        <span className="text-gray-500 dark:text-gray-400">
+                          {" · lluvia "}{leg.weatherForecast.departure.rainPct}%
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    <span className="inline-block w-full border-b border-dashed border-gray-300 dark:border-gray-600 h-4" />
+                  )}
+                </dd>
               </div>
               <div className="flex gap-2">
                 <dt className="text-gray-500 dark:text-gray-400 w-40 shrink-0">
                   {leg.to} (llegada):
                 </dt>
-                <dd className="text-gray-700 dark:text-gray-300 border-b border-dashed border-gray-300 dark:border-gray-600 flex-1" />
+                <dd className="text-gray-700 dark:text-gray-300 flex-1">
+                  {leg.weatherForecast ? (
+                    <>
+                      {leg.weatherForecast.arrival.summary} ·{" "}
+                      <span className="font-mono">
+                        {leg.weatherForecast.arrival.highC}° /{" "}
+                        {leg.weatherForecast.arrival.lowC}°
+                      </span>
+                      {typeof leg.weatherForecast.arrival.rainPct === "number" && (
+                        <span className="text-gray-500 dark:text-gray-400">
+                          {" · lluvia "}{leg.weatherForecast.arrival.rainPct}%
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    <span className="inline-block w-full border-b border-dashed border-gray-300 dark:border-gray-600 h-4" />
+                  )}
+                </dd>
               </div>
             </dl>
+            {leg.weatherForecast && (
+              <p className="print-hidden text-[10px] text-gray-400 dark:text-gray-500 mt-3 italic">
+                Pronóstico cargado el 23 may. Revisá la mañana del viaje y reimprimí si cambió.
+              </p>
+            )}
           </section>
         </article>
       </div>
