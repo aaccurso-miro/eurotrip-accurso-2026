@@ -532,23 +532,30 @@ export const itinerary: DayData[] = [
         {
           title: "Viaje Praga → Kassel",
           description:
-            "Check-out tranquilo. ~4h30-5h de manejo con parada para café en ruta.",
+            "Check-out temprano (idealmente salir ~9:00). ~4h30-5h de manejo con 1 parada corta para café. Objetivo: llegar a Kassel cerca de las 13:30 para alcanzar el show de agua en el Bergpark.",
           type: "driving",
         },
       ],
       afternoon: [
         {
-          title: "Bergpark Wilhelmshöhe",
+          title: "Wasserspiele en Bergpark Wilhelmshöhe",
           description:
-            "Visita al parque de ladera más grande de Europa (UNESCO). Estatua de Hércules, cascadas y Palacio Wilhelmshöhe con vistas espectaculares.",
+            "¡Día clave! El miércoles es uno de los pocos días que se activan las cascadas históricas (mayo a octubre). Show arranca 14:30 al pie del Hércules y baja 2,3 km cuesta abajo por cascadas, Puente del Diablo y acueducto. Climax: chorro de 50 m en la Gran Fuente ~15:45. Termina ~16:00 frente al Palacio Wilhelmshöhe. Entrada gratis al parque.",
           type: "sightseeing",
+        },
+        {
+          title: "Palacio Wilhelmshöhe + 'Rembrandt 1632'",
+          description:
+            "Exposición especial mayo-agosto 2026 en el Palacio. Solo si quedan con energía después de bajar las cascadas.",
+          type: "culture",
+          optional: true,
         },
       ],
       evening: [
         {
           title: "Cena en Kassel",
           description:
-            "Restaurante local con cocina alemana tradicional.",
+            "Restaurante local con cocina alemana tradicional. Después de bajar el parque, una cena tranquila se va a sentir bien.",
           type: "food",
         },
       ],
@@ -557,7 +564,7 @@ export const itinerary: DayData[] = [
       merienda: {
         name: "Café en Bergpark",
         description:
-          "Café con vistas en el área del Palacio Wilhelmshöhe.",
+          "Café con vistas en el área del Palacio Wilhelmshöhe — buen final después de bajar las cascadas.",
       },
       dinner: {
         name: "Restaurante local",
@@ -566,8 +573,10 @@ export const itinerary: DayData[] = [
       },
     },
     tips: [
-      "El Bergpark es enorme: planificar al menos 2-3 horas para recorrerlo con calma.",
-      "Las cascadas de agua se activan en horarios específicos (verificar en temporada).",
+      "Wasserspiele corren solo miércoles, domingos y feriados. Este miércoles cae perfecto.",
+      "El show son 2,3 km cuesta abajo siguiendo el agua: factible para los cuatro pero con piso irregular en partes. Buen calzado.",
+      "Estacionamiento €8,50 los días de show — el ticket de parking sirve también como pasaje para el bus línea 23 (hasta 7 personas).",
+      "Para subir al Hércules en transporte: tram línea 4 a Druseltal, después bus 22 o 23 hasta el monumento.",
     ],
   },
   {
