@@ -40,7 +40,7 @@ export const drivingLegs: DrivingLeg[] = [
       "https://www.google.com/maps/dir/Orcastraat+3,+Amsterdam,+Netherlands/Rastst%C3%A4tte+Ohligser+Heide+West,+Germany/Rastst%C3%A4tte+Spessart+S%C3%BCd,+Germany/Rothenburg+ob+der+Tauber,+Germany/",
     stops: [
       {
-        name: "Rastätte Ohligser Heide West",
+        name: "Raststätte Ohligser Heide West",
         region: "Alemania, A3",
         distanceFromStartKm: 230,
         estimatedArrival: "08:15",
@@ -50,7 +50,7 @@ export const drivingLegs: DrivingLeg[] = [
           "https://www.google.com/maps/search/Rastst%C3%A4tte+Ohligser+Heide+West",
       },
       {
-        name: "Rastätte Spessart Süd",
+        name: "Raststätte Spessart Süd",
         region: "Alemania, A3",
         distanceFromStartKm: 440,
         estimatedArrival: "10:50",
