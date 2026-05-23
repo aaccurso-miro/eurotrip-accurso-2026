@@ -13,6 +13,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { drivingLegs, drivingTips } from "@/data/driving";
+import { roadSheets } from "@/data/roadSheets";
+
+// Match driving-table rows to their road sheet by departure city. For day 4
+// (Salzburgo → Admont → Viena), only the first leg (Salzburgo → Admont) gets
+// the print link — the Admont → Viena row stays empty since both share dia-4.
+const SHEET_SLUG_BY_FROM = new Map(roadSheets.map((s) => [s.from, s.slug]));
 
 const tipIcons: Record<string, React.ReactNode> = {
   badge: <BadgeCheck size={20} />,
@@ -85,9 +91,9 @@ export default function DrivingInfo() {
                   <span className="font-medium text-gray-800 dark:text-gray-100">
                     {leg.from} → {leg.to}
                   </span>
-                  {leg.stops && leg.stops.length > 0 && (
+                  {SHEET_SLUG_BY_FROM.get(leg.from) && (
                     <Link
-                      href="/hoja-de-ruta"
+                      href={`/hoja-de-ruta/${SHEET_SLUG_BY_FROM.get(leg.from)}`}
                       className="print-hidden inline-flex items-center gap-1 text-xs text-[#1e3a5f] dark:text-[#93c5fd] hover:underline ml-1"
                     >
                       <Printer size={11} aria-hidden="true" />

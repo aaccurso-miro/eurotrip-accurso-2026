@@ -106,6 +106,8 @@ export const cities: City[] = [
       checkOut: "28 may",
       rooms: "2 habitaciones",
       website: "https://turnerwirt.at/",
+      address: "Linzer Bundesstraße 54, 5023 Salzburg, Austria",
+      phone: "+43 662 640630",
     },
     weather: {
       avgHighC: 19,
@@ -162,6 +164,8 @@ export const cities: City[] = [
       checkOut: "31 may",
       rooms: "2 habitaciones",
       website: "https://www.leonardo-hotels.com/vienna/leonardo-hotel-vienna-schonbrunn",
+      address: "Linke Wienzeile 224, 1150 Wien, Austria",
+      phone: "+43 1 3366222",
     },
     weather: {
       avgHighC: 21,
@@ -197,6 +201,8 @@ export const cities: City[] = [
       checkOut: "3 jun",
       rooms: "2 habitaciones",
       website: "https://www.hotelint.cz/en/",
+      address: "Koulova 15, 160 00 Praga 6, República Checa",
+      phone: "+420 296 537 111",
     },
     weather: {
       avgHighC: 20,
@@ -232,6 +238,8 @@ export const cities: City[] = [
       checkOut: "4 jun",
       rooms: "2 habitaciones",
       website: "https://www.mountainparkhotel.de/",
+      address: "Im Druseltal 93, 34131 Kassel, Alemania",
+      phone: "+49 561 81685830",
     },
     weather: {
       avgHighC: 19,

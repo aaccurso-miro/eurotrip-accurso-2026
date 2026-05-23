@@ -1,20 +1,3 @@
-export interface DrivingStop {
-  name: string;
-  region: string;
-  distanceFromStartKm: number;
-  estimatedArrival: string; // "HH:MM"
-  durationMin: number;
-  purpose: string;
-  mapsUrl?: string;
-}
-
-export interface WeatherSnapshot {
-  summary: string;     // "Soleado, cálido"
-  highC: number;
-  lowC: number;
-  rainPct?: number;    // probability of rain, 0-100
-}
-
 export interface DrivingLeg {
   from: string;
   to: string;
@@ -22,18 +5,6 @@ export interface DrivingLeg {
   estimatedHours: string;
   tollInfo: string;
   notes: string;
-  // Optional fields for printable road sheet
-  date?: string;            // "25 mayo 2026"
-  weekday?: string;         // "Lunes"
-  departureTime?: string;   // "06:00"
-  startAddress?: string;    // "Orcastraat 3, Ámsterdam"
-  routeMapsUrl?: string;
-  stops?: DrivingStop[];
-  weatherForecast?: {
-    fetchedOn: string; // "23 mayo 2026" — when the forecast was captured
-    departure: WeatherSnapshot;
-    arrival: WeatherSnapshot;
-  };
 }
 
 export const drivingLegs: DrivingLeg[] = [
@@ -44,49 +15,6 @@ export const drivingLegs: DrivingLeg[] = [
     estimatedHours: "5h30 – 6h",
     tollInfo: "Sin peaje. Posible zona ambiental (Umweltplakette) si entran a ciudades alemanas.",
     notes: "2 paradas recomendadas: zona Colonia y zona Frankfurt/Würzburg.",
-    date: "25 mayo 2026",
-    weekday: "Lunes",
-    departureTime: "06:00",
-    startAddress: "Orcastraat 3, Ámsterdam",
-    routeMapsUrl:
-      "https://www.google.com/maps/dir/Orcastraat+3,+Amsterdam,+Netherlands/Rastst%C3%A4tte+Ohligser+Heide+West,+Germany/Rastst%C3%A4tte+Spessart+S%C3%BCd,+Germany/Rothenburg+ob+der+Tauber,+Germany/",
-    weatherForecast: {
-      fetchedOn: "23 mayo 2026",
-      departure: {
-        summary: "Soleado y cálido",
-        highC: 22,
-        lowC: 13,
-        rainPct: 10,
-      },
-      arrival: {
-        summary: "Nublado, posible llovizna",
-        highC: 15,
-        lowC: 7,
-        rainPct: 40,
-      },
-    },
-    stops: [
-      {
-        name: "Raststätte Ohligser Heide West",
-        region: "Alemania, A3",
-        distanceFromStartKm: 230,
-        estimatedArrival: "08:15",
-        durationMin: 20,
-        purpose: "Café + baño",
-        mapsUrl:
-          "https://www.google.com/maps/search/Rastst%C3%A4tte+Ohligser+Heide+West",
-      },
-      {
-        name: "Raststätte Spessart Süd",
-        region: "Alemania, A3",
-        distanceFromStartKm: 440,
-        estimatedArrival: "10:50",
-        durationMin: 45,
-        purpose: "Almuerzo",
-        mapsUrl:
-          "https://www.google.com/maps/search/Rastst%C3%A4tte+Spessart+S%C3%BCd",
-      },
-    ],
   },
   {
     from: "Rothenburg ob der Tauber",

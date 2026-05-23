@@ -21,7 +21,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import type { DayData, ActivityType } from "@/data/itinerary";
+import { roadSheets } from "@/data/roadSheets";
 import { CITY_COLORS } from "@/lib/constants";
+
+const DAYS_WITH_ROAD_SHEET = new Set(roadSheets.map((s) => s.dayNumber));
 
 const typeIcons: Record<ActivityType, React.ReactNode> = {
   driving: <Car size={16} />,
@@ -63,6 +66,7 @@ export default function DayCard({
   const color = CITY_COLORS[day.cityId] || "#1e3a5f";
 
   const hasDriving = day.from !== day.to;
+  const hasRoadSheet = DAYS_WITH_ROAD_SHEET.has(day.dayNumber);
 
   useEffect(() => {
     if (isToday && cardRef.current) {
@@ -171,15 +175,15 @@ export default function DayCard({
           </div>
         </button>
 
-        {/* Print sheet link — only for Day 1 */}
-        {day.dayNumber === 1 && (
+        {/* Print sheet link — shown only when a road sheet exists for this day */}
+        {hasRoadSheet && (
           <div className="px-5 sm:px-6 pb-3">
             <Link
-              href="/hoja-de-ruta"
+              href={`/hoja-de-ruta/dia-${day.dayNumber}`}
               className="print-hidden inline-flex items-center gap-1.5 text-xs text-[#1e3a5f] dark:text-[#93c5fd] hover:underline"
             >
               <Printer size={12} aria-hidden="true" />
-              Imprimir hoja de ruta del tramo
+              Imprimir hoja de ruta del día
             </Link>
           </div>
         )}
