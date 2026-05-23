@@ -9,7 +9,9 @@ import {
   Coffee,
   Shield,
   BadgeCheck,
+  Printer,
 } from "lucide-react";
+import Link from "next/link";
 import { drivingLegs, drivingTips } from "@/data/driving";
 
 const tipIcons: Record<string, React.ReactNode> = {
@@ -78,11 +80,20 @@ export default function DrivingInfo() {
                     : "border-b border-gray-100 dark:border-gray-700"
                 }`}
               >
-                <div className="col-span-4 flex items-center gap-2">
+                <div className="col-span-4 flex items-center gap-2 flex-wrap">
                   <Route size={14} className="text-[#d4a843] shrink-0" />
                   <span className="font-medium text-gray-800 dark:text-gray-100">
                     {leg.from} → {leg.to}
                   </span>
+                  {leg.stops && leg.stops.length > 0 && (
+                    <Link
+                      href="/hoja-de-ruta"
+                      className="print-hidden inline-flex items-center gap-1 text-xs text-[#1e3a5f] dark:text-[#93c5fd] hover:underline ml-1"
+                    >
+                      <Printer size={11} aria-hidden="true" />
+                      Imprimir
+                    </Link>
+                  )}
                 </div>
                 <div className="col-span-2 text-center font-medium text-[#1e3a5f] dark:text-[#93c5fd]">
                   {leg.distanceKm} km
