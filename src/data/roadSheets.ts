@@ -15,6 +15,13 @@ export interface WeatherSnapshot {
   rainPct?: number;
 }
 
+/** A waypoint in the high-level route overview shown above the timeline. */
+export interface RouteWaypoint {
+  label: string;          // "Colonia"
+  /** Highway(s) used to get FROM the previous waypoint TO this one. Omit for the first waypoint. */
+  via?: string;
+}
+
 export interface RoadSheet {
   slug: string;           // "dia-1", "dia-2", ...
   dayNumber: number;
@@ -30,6 +37,8 @@ export interface RoadSheet {
   arrivalEstimate: string; // "~13:00"
   routeMapsUrl?: string;
   stops: DrivingStop[];
+  /** Sequential waypoints from start to end, with highway labels between them. */
+  routeOverview?: RouteWaypoint[];
   weatherForecast?: {
     fetchedOn: string;
     departure: WeatherSnapshot;
@@ -58,6 +67,13 @@ export const roadSheets: RoadSheet[] = [
     arrivalEstimate: "~13:00",
     routeMapsUrl:
       "https://www.google.com/maps/dir/Orcastraat+3,+Amsterdam,+Netherlands/Rastst%C3%A4tte+Ohligser+Heide+West,+Germany/Rastst%C3%A4tte+Spessart+S%C3%BCd,+Germany/Rothenburg+ob+der+Tauber,+Germany/",
+    routeOverview: [
+      { label: "Ámsterdam" },
+      { label: "Colonia", via: "A2 → A3" },
+      { label: "Frankfurt", via: "A3" },
+      { label: "Würzburg", via: "A3" },
+      { label: "Rothenburg", via: "A7/A6" },
+    ],
     stops: [
       {
         name: "Raststätte Ohligser Heide West",
@@ -82,9 +98,11 @@ export const roadSheets: RoadSheet[] = [
     ],
     weatherForecast: {
       fetchedOn: "23 mayo 2026",
-      departure: { summary: "Soleado y cálido", highC: 22, lowC: 13, rainPct: 10 },
-      arrival: { summary: "Nublado, posible llovizna", highC: 15, lowC: 7, rainPct: 40 },
+      departure: { summary: "Soleado y cálido", highC: 24, lowC: 14, rainPct: 5 },
+      arrival: { summary: "Soleado y cálido", highC: 25, lowC: 13, rainPct: 5 },
     },
+    weatherNote:
+      "Pronóstico real a 2 días. Las fuentes divergen para Rothenburg (rango 20-30°C); revisar la mañana del viaje.",
   },
 
   // ============================================================
@@ -105,6 +123,13 @@ export const roadSheets: RoadSheet[] = [
     arrivalEstimate: "~13:30",
     routeMapsUrl:
       "https://www.google.com/maps/dir/Rothenburg+ob+der+Tauber,+Germany/Rastst%C3%A4tte+Chiemsee+Nord/Salzburg,+Austria/",
+    routeOverview: [
+      { label: "Rothenburg" },
+      { label: "Núremberg", via: "A6" },
+      { label: "Múnich", via: "A9" },
+      { label: "Chiemsee", via: "A8" },
+      { label: "Salzburgo", via: "A8" },
+    ],
     stops: [
       {
         name: "Raststätte Chiemsee Nord",
@@ -119,14 +144,11 @@ export const roadSheets: RoadSheet[] = [
     ],
     weatherForecast: {
       fetchedOn: "23 mayo 2026",
-      departure: {
-        summary: "Soleado de mañana, nubes por la tarde",
-        highC: 21,
-        lowC: 10,
-        rainPct: 30,
-      },
-      arrival: { summary: "Parcialmente nublado, agradable", highC: 19, lowC: 8, rainPct: 25 },
+      departure: { summary: "Soleado y cálido", highC: 26, lowC: 14, rainPct: 10 },
+      arrival: { summary: "Lluvia probable, llevar paraguas", highC: 19, lowC: 8, rainPct: 60 },
     },
+    weatherNote:
+      "Pronóstico a 3 días. Los modelos muestran patrón lluvioso en la zona alpina al llegar a Salzburgo — paraguas/chaquetón a mano.",
   },
 
   // ============================================================
@@ -147,6 +169,13 @@ export const roadSheets: RoadSheet[] = [
     arrivalEstimate: "~16:30",
     routeMapsUrl:
       "https://www.google.com/maps/dir/Hotel+Turnerwirt,+Linzer+Bundesstra%C3%9Fe+54,+5023+Salzburg/Stift+Admont,+Austria/Landzeit+St.+P%C3%B6lten,+Austria/Linke+Wienzeile+224,+1150+Wien/",
+    routeOverview: [
+      { label: "Salzburgo" },
+      { label: "Admont", via: "A10 → A9 → B146" },
+      { label: "Linz (cerca)", via: "A9 → A1" },
+      { label: "St. Pölten", via: "A1" },
+      { label: "Viena", via: "A1" },
+    ],
     stops: [
       {
         name: "Stift Admont (visita a la biblioteca)",
@@ -169,9 +198,11 @@ export const roadSheets: RoadSheet[] = [
     ],
     weatherForecast: {
       fetchedOn: "23 mayo 2026",
-      departure: { summary: "Mayormente soleado, tarde cálida", highC: 19, lowC: 8, rainPct: 20 },
-      arrival: { summary: "Soleado y cálido", highC: 26, lowC: 13, rainPct: 15 },
+      departure: { summary: "Nublado con chubascos probables", highC: 19, lowC: 8, rainPct: 65 },
+      arrival: { summary: "Soleado y agradable", highC: 26, lowC: 13, rainPct: 15 },
     },
+    weatherNote:
+      "Pronóstico a 5 días. Salzburgo a la salida puede estar lluvioso; Viena se proyecta estable. Modelos divergen — confirmar pocos días antes.",
   },
 
   // ============================================================
@@ -192,6 +223,12 @@ export const roadSheets: RoadSheet[] = [
     arrivalEstimate: "~17:30",
     routeMapsUrl:
       "https://www.google.com/maps/dir/Linke+Wienzeile+224,+1150+Wien/Rastst%C3%A4tte+Hochleithen+A5+Austria/Prague,+Czechia/",
+    routeOverview: [
+      { label: "Viena" },
+      { label: "Hochleithen", via: "A5" },
+      { label: "Brno (cerca)", via: "D2/D1" },
+      { label: "Praga", via: "D1" },
+    ],
     stops: [
       {
         name: "Raststätte Hochleithen",
@@ -205,15 +242,11 @@ export const roadSheets: RoadSheet[] = [
     ],
     weatherForecast: {
       fetchedOn: "23 mayo 2026",
-      departure: { summary: "Parcialmente nublado, templado", highC: 21, lowC: 10, rainPct: 30 },
-      arrival: {
-        summary: "Parcialmente nublado, posible lluvia leve",
-        highC: 19,
-        lowC: 9,
-        rainPct: 35,
-      },
+      departure: { summary: "Parcialmente nublado, templado", highC: 21, lowC: 10, rainPct: 25 },
+      arrival: { summary: "Parcialmente nublado, fresco", highC: 19, lowC: 8, rainPct: 25 },
     },
-    weatherNote: "Pronóstico a 8 días: confiabilidad reducida, revisar más cerca del viaje.",
+    weatherNote:
+      "Promedio climatológico — no es pronóstico real a 8 días vista. Revisar pocos días antes del viaje.",
   },
 
   // ============================================================
@@ -234,6 +267,13 @@ export const roadSheets: RoadSheet[] = [
     arrivalEstimate: "~13:30 (a tiempo para los Wasserspiele 14:30)",
     routeMapsUrl:
       "https://www.google.com/maps/dir/Grand+Hotel+International+Prague/Rastst%C3%A4tte+Rozvadov+D5/Serways+Rastst%C3%A4tte+N%C3%BCrnberg-Feucht+Ost/Kassel,+Germany/",
+    routeOverview: [
+      { label: "Praga" },
+      { label: "Pilsen", via: "D5" },
+      { label: "Núremberg", via: "A6/A93" },
+      { label: "Würzburg", via: "A3/A7" },
+      { label: "Kassel", via: "A7" },
+    ],
     stops: [
       {
         name: "Raststätte Rozvadov",
@@ -258,16 +298,11 @@ export const roadSheets: RoadSheet[] = [
     ],
     weatherForecast: {
       fetchedOn: "23 mayo 2026",
-      departure: {
-        summary: "Parcialmente nublado, inicio de verano",
-        highC: 20,
-        lowC: 10,
-        rainPct: 35,
-      },
-      arrival: { summary: "Nublado, posible llovizna", highC: 21, lowC: 11, rainPct: 35 },
+      departure: { summary: "Parcialmente nublado", highC: 19, lowC: 9, rainPct: 30 },
+      arrival: { summary: "Templado, cielos variables", highC: 22, lowC: 13, rainPct: 35 },
     },
     weatherNote:
-      "Promedio estacional (pronóstico real disponible más cerca del viaje). Si llueve fuerte, los Wasserspiele igual se hacen.",
+      "Promedio climatológico de junio — no es pronóstico real a 11 días. Si llueve fuerte, los Wasserspiele igual se hacen.",
   },
 
   // ============================================================
@@ -287,6 +322,13 @@ export const roadSheets: RoadSheet[] = [
     arrivalEstimate: "~14:30",
     routeMapsUrl:
       "https://www.google.com/maps/dir/MountainPark+Hotel,+Kassel/Rastst%C3%A4tte+Bentheimer+Wald+S%C3%BCd/Amsterdam,+Netherlands/",
+    routeOverview: [
+      { label: "Kassel" },
+      { label: "Dortmund (norte)", via: "A44" },
+      { label: "Osnabrück", via: "A1/A30" },
+      { label: "Bad Bentheim", via: "A30" },
+      { label: "Ámsterdam", via: "A1 NL → A2" },
+    ],
     stops: [
       {
         name: "Raststätte Bentheimer Wald Süd",
@@ -301,10 +343,11 @@ export const roadSheets: RoadSheet[] = [
     ],
     weatherForecast: {
       fetchedOn: "23 mayo 2026",
-      departure: { summary: "Parcialmente nublado, agradable", highC: 21, lowC: 11, rainPct: 30 },
-      arrival: { summary: "Nublado, posible lluvia leve", highC: 19, lowC: 10, rainPct: 40 },
+      departure: { summary: "Templado, posible llovizna", highC: 22, lowC: 13, rainPct: 35 },
+      arrival: { summary: "Nublado, llovizna posible", highC: 19, lowC: 12, rainPct: 40 },
     },
-    weatherNote: "Promedio estacional (pronóstico real disponible más cerca del viaje).",
+    weatherNote:
+      "Promedio climatológico de junio — no es pronóstico real a 12 días.",
   },
 ];
 
