@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Car, Route } from "lucide-react";
+import { Car, Route, Printer } from "lucide-react";
+import Link from "next/link";
 import { cities } from "@/data/cities";
 import { drivingLegs } from "@/data/driving";
+import { roadSheets } from "@/data/roadSheets";
 import { CITY_COLORS, TOTAL_DISTANCE_KM } from "@/lib/constants";
 import { getTripDayInfo } from "@/lib/tripDay";
 
@@ -279,6 +281,26 @@ export default function TripTimeline() {
         >
           Total: ~{TOTAL_DISTANCE_KM} km · 11 días · 7 ciudades
         </motion.p>
+
+        {/* Road sheet CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15, duration: 0.4 }}
+          className="mt-8 flex flex-col items-center gap-2"
+        >
+          <Link
+            href="/hoja-de-ruta"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e3a5f] hover:bg-[#1e3a5f]/90 dark:bg-[#93c5fd]/15 dark:hover:bg-[#93c5fd]/25 dark:text-[#93c5fd] text-white text-sm font-medium transition-colors shadow-sm hover:shadow"
+          >
+            <Printer size={16} aria-hidden="true" />
+            Ver hojas de ruta imprimibles
+          </Link>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            {roadSheets.length} hojas · una por cada día de manejo
+          </p>
+        </motion.div>
       </div>
     </section>
   );
