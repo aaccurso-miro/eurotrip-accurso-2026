@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Printer, MapPin, Clock } from "lucide-react";
+import { ArrowLeft, Printer, MapPin, Clock, BookOpen } from "lucide-react";
 import { roadSheets } from "@/data/roadSheets";
 import { CITY_COLORS } from "@/lib/constants";
 
@@ -30,6 +30,34 @@ export default function HojaDeRutaIndexPage() {
             paradas en ruta, hotel destino y pronóstico del clima.
           </p>
         </header>
+
+        {/* CTA destacado: folleto completo */}
+        <Link
+          href="/hoja-de-ruta/folleto"
+          className="group block mb-6 rounded-xl border-2 border-[#1e3a5f] dark:border-[#93c5fd] bg-[#1e3a5f] dark:bg-[#1e3a5f]/40 p-5 hover:bg-[#1e3a5f]/90 dark:hover:bg-[#1e3a5f]/60 transition-colors"
+        >
+          <div className="flex items-start gap-4">
+            <BookOpen size={28} className="text-[#d4a843] shrink-0 mt-0.5" aria-hidden="true" />
+            <div className="flex-1">
+              <p className="text-[10px] uppercase tracking-widest text-[#d4a843] font-semibold mb-1">
+                Para imprimir todo de una
+              </p>
+              <h2 className="text-lg sm:text-xl font-[family-name:var(--font-playfair)] text-white mb-1">
+                Folleto completo del viaje
+              </h2>
+              <p className="text-xs text-white/80 leading-snug">
+                12 páginas: portada + resumen + hoteles + info práctica + 6 hojas de ruta + contactos. Pensado para imprimir como librito A5.
+              </p>
+            </div>
+            <span className="text-xs text-white/70 group-hover:text-white whitespace-nowrap shrink-0 hidden sm:inline">
+              Ver folleto →
+            </span>
+          </div>
+        </Link>
+
+        <h2 className="text-[11px] uppercase tracking-widest font-semibold text-gray-700 dark:text-gray-200 mb-3">
+          O imprimí hojas sueltas
+        </h2>
 
         <ul className="space-y-3">
           {roadSheets.map((sheet) => {
