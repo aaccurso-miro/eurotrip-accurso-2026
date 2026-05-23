@@ -17,7 +17,9 @@ import {
   Sunset,
   Moon,
   MapPin,
+  Printer,
 } from "lucide-react";
+import Link from "next/link";
 import type { DayData, ActivityType } from "@/data/itinerary";
 import { CITY_COLORS } from "@/lib/constants";
 
@@ -168,6 +170,19 @@ export default function DayCard({
             </motion.div>
           </div>
         </button>
+
+        {/* Print sheet link — only for Day 1 */}
+        {day.dayNumber === 1 && (
+          <div className="px-5 sm:px-6 pb-3">
+            <Link
+              href="/hoja-de-ruta"
+              className="print-hidden inline-flex items-center gap-1.5 text-xs text-[#1e3a5f] dark:text-[#93c5fd] hover:underline"
+            >
+              <Printer size={12} />
+              Imprimir hoja de ruta del tramo
+            </Link>
+          </div>
+        )}
 
         {/* Expandable content */}
         <AnimatePresence>
