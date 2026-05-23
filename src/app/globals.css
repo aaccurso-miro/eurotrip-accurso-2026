@@ -74,3 +74,36 @@ section {
 [data-theme="dark"] ::-webkit-scrollbar-track {
   background: #1e293b;
 }
+
+/* Print mode — used by /hoja-de-ruta */
+@media print {
+  /* Hide site chrome + any element marked .print-hidden */
+  nav,
+  footer,
+  .print-hidden {
+    display: none !important;
+  }
+
+  /* Reset to print-friendly colors regardless of dark mode */
+  html[data-theme="dark"],
+  html {
+    background: white !important;
+    color: black !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* A4 portrait with comfortable margins */
+  @page {
+    size: A4 portrait;
+    margin: 1.5cm;
+  }
+
+  /* Avoid awkward breaks inside grouped sections */
+  .print-keep {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
