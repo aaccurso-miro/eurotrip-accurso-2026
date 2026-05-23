@@ -84,36 +84,19 @@ section {
     display: none !important;
   }
 
-  /* Ink-saving: strip all backgrounds, shadows, and colors regardless of theme.
-     Forces a light, low-ink print preview even when the user has dark mode on. */
-  html,
-  html[data-theme="dark"],
-  html *,
-  html[data-theme="dark"] * {
-    background-color: transparent !important;
-    background-image: none !important;
-    color: #000 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  /* Paper-white surfaces */
+  /* Page surfaces go pure white in print (cleaner than the cream wrapper).
+     Branded color accents (gold, deep blue, dotted borders) print as-is.
+     Dark mode is swapped to light by PrintButton.tsx's beforeprint hook,
+     so dark: utility variants do not apply during print rendering. */
   html,
   body,
-  main,
-  article {
+  main {
     background-color: #fff !important;
   }
 
-  /* Keep structural borders visible (light gray, low ink) */
-  html *,
-  html[data-theme="dark"] * {
-    border-color: #d1d5db !important;
-  }
-
-  /* Keep underlines on real links so destinations are discoverable on paper */
-  a {
-    text-decoration: underline !important;
+  /* Drop heavy shadows — they don't translate well to paper. */
+  * {
+    box-shadow: none !important;
   }
 
   /* A4 portrait with comfortable margins */
