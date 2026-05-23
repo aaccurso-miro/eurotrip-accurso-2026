@@ -178,7 +178,7 @@ export default function DayCard({
               href="/hoja-de-ruta"
               className="print-hidden inline-flex items-center gap-1.5 text-xs text-[#1e3a5f] dark:text-[#93c5fd] hover:underline"
             >
-              <Printer size={12} />
+              <Printer size={12} aria-hidden="true" />
               Imprimir hoja de ruta del tramo
             </Link>
           </div>
